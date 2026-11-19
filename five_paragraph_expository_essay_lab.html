@@ -1,0 +1,1302 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}</style><title>Five-Paragraph Expository Essay Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap">
+<style>
+/* Layout: the same student lab-notebook as the APA 7 Citation Lab — sticky nav, one 920px column, one colour per essay part used identically in every diagram, example and the sample essay */
+:root{
+  --bg:#f5f6fa; --surface:#ffffff; --ink:#1b2236; --muted:#586280; --line:#dce0eb; --accent:#2c3d94; --accent-bg:#e6e9f8;
+  --paper:#ffffff; --link:#1558d6; --hl:#fff09a;
+  --err:#bf2626; --err-bg:#fde2e2; --ok:#16744a; --ok-bg:#d9f2e4;
+  --pen:#c8102e;
+  /* essay parts */
+  --hk:#b04a00; --hk-bg:#fde6d2;      /* hook */
+  --bk:#4a5873; --bk-bg:#e6ebf3;      /* background + key words */
+  --th:#1c58c7; --th-bg:#e0eafd;      /* thesis + restated thesis */
+  --ts:#0b6f73; --ts-bg:#d6f1f0;      /* topic sentences + main points */
+  --ev:#a3256f; --ev-bg:#fae2ef;      /* evidence + citation */
+  --an:#5732b3; --an-bg:#ebe4fb;      /* analysis (critical thinking) */
+  --cs:#586280; --cs-bg:transparent;  /* concluding sentence (optional) */
+  --ft:#7a5c00; --ft-bg:#fff0a8;      /* final thought */
+  --board:#21372d; --board-edge:#7a5a35; --chalk:#f3efe2; --chalk-y:#ffd75e; --chalk-line:#2f5d46;
+  --f-display:'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --f-body:'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-ref:'Source Serif 4', 'Times New Roman', Times, serif;
+  --f-hand:'Caveat','Segoe Print','Comic Sans MS',cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f121b; --surface:#171b28; --ink:#e5e8f2; --muted:#9ba4be; --line:#2a3045; --accent:#a3b3ff; --accent-bg:#232a4a;
+  --paper:#1c2030; --link:#7fb2ff; --hl:#5c4e10; --err:#ff8080; --err-bg:#3d1b1e; --ok:#63d79c; --ok-bg:#163625; --pen:#ff7b8a;
+  --hk:#f6a55e; --hk-bg:#3c2412; --bk:#aab5cb; --bk-bg:#242a3a; --th:#86adff; --th-bg:#1b2a4b; --ts:#5fd3d0; --ts-bg:#143537;
+  --ev:#f28fc6; --ev-bg:#3b1c30; --an:#b9a0ff; --an-bg:#291f48; --cs:#9ba4be; --ft:#f1d46a; --ft-bg:#3a3110;
+  --board:#21372d; --board-edge:#7a5a35; --chalk:#f3efe2; --chalk-y:#ffd75e; --chalk-line:#e9e4d4; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f121b; --surface:#171b28; --ink:#e5e8f2; --muted:#9ba4be; --line:#2a3045; --accent:#a3b3ff; --accent-bg:#232a4a;
+  --paper:#1c2030; --link:#7fb2ff; --hl:#5c4e10; --err:#ff8080; --err-bg:#3d1b1e; --ok:#63d79c; --ok-bg:#163625; --pen:#ff7b8a;
+  --hk:#f6a55e; --hk-bg:#3c2412; --bk:#aab5cb; --bk-bg:#242a3a; --th:#86adff; --th-bg:#1b2a4b; --ts:#5fd3d0; --ts-bg:#143537;
+  --ev:#f28fc6; --ev-bg:#3b1c30; --an:#b9a0ff; --an-bg:#291f48; --cs:#9ba4be; --ft:#f1d46a; --ft-bg:#3a3110;
+  --board:#21372d; --board-edge:#7a5a35; --chalk:#f3efe2; --chalk-y:#ffd75e; --chalk-line:#e9e4d4; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:920px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,5vw,2.9rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(1.55rem,3.6vw,2rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+ul{margin:0}
+.muted{color:var(--muted)}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+a{color:var(--link);text-decoration:underline;text-underline-offset:2px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+header.top{padding-block:40px 24px;display:grid;gap:14px;grid-template-columns:1.2fr 1fr;align-items:center;column-gap:28px}
+header.top .hero-text{display:grid;gap:14px;min-width:0}
+header.top p.lede{max-width:62ch;font-size:1.08rem}
+@media (max-width:760px){header.top{grid-template-columns:1fr}.hero-art{max-width:340px;justify-self:center}}
+
+nav.sec{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;gap:4px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.sec a{flex:none;text-decoration:none;color:var(--ink);font-weight:700;font-size:.95rem;padding:7px 14px;border-radius:999px}
+nav.sec a:hover{background:var(--accent-bg);color:var(--accent)}
+
+section{padding-block:44px 8px;display:grid;grid-template-columns:minmax(0,1fr);gap:22px;scroll-margin-top:60px}
+.sec-head{display:grid;gap:8px}
+.sec-head p{max-width:64ch}
+.sec-tag{display:flex;align-items:center;gap:10px}
+.sec-ico{width:38px;height:38px;flex:none}
+.sec-ico .bg{fill:var(--accent-bg)}
+.sec-ico .st{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sec-ico .fl{fill:var(--accent)}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;display:grid;gap:14px;min-width:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid2{align-items:start}
+@media (max-width:720px){.grid2{grid-template-columns:1fr}.panel{padding:16px}}
+.row-lbl{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.note{font-size:.96rem;color:var(--muted);max-width:66ch}
+.note b{color:var(--ink)}
+.inv{font-size:.8rem;font-weight:700;color:var(--muted);background:var(--bk-bg);padding:2px 8px;border-radius:6px;justify-self:start}
+
+/* colour key */
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+.key{display:inline-flex;align-items:center;font-size:.86rem;font-weight:700;padding:4px 10px;border-radius:6px}
+.k-hk{background:var(--hk-bg);color:var(--hk)}.k-bk{background:var(--bk-bg);color:var(--bk)}.k-th{background:var(--th-bg);color:var(--th)}
+.k-ts{background:var(--ts-bg);color:var(--ts)}.k-ev{background:var(--ev-bg);color:var(--ev)}.k-an{background:var(--an-bg);color:var(--an)}
+.k-cs{color:var(--cs);border:1.5px dashed var(--cs)}.k-ft{background:var(--ft-bg);color:var(--ft)}
+
+/* chips */
+.seg-ctrl{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.92rem;cursor:pointer}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.fade{animation:none}
+@media (prefers-reduced-motion:no-preference){.fade{animation:fadein .35s ease-out}}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* coloured sentence parts (always the same colour for the same job) */
+.s-hk{background:var(--hk-bg);color:var(--hk)}.s-bk{background:var(--bk-bg);color:var(--bk)}.s-th{background:var(--th-bg);color:var(--th)}
+.s-ts{background:var(--ts-bg);color:var(--ts)}.s-ev{background:var(--ev-bg);color:var(--ev)}.s-an{background:var(--an-bg);color:var(--an)}
+.s-cs{color:var(--cs);outline:1.5px dashed var(--cs);outline-offset:1px}.s-ft{background:var(--ft-bg);color:var(--ft)}
+.s-hk,.s-bk,.s-th,.s-ts,.s-ev,.s-an,.s-cs,.s-ft{border-radius:4px;padding:1px 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone;font-weight:600}
+.cite{color:var(--ev);font-weight:700;border-bottom:2px solid var(--ev);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.prose{font-family:var(--f-ref);font-size:1.1rem;line-height:1.85}
+
+/* teacher pen notes (from the annotated slides) */
+.pen{font-family:var(--f-hand);color:var(--pen);font-size:1.35rem;line-height:1.15;font-weight:600}
+.pen u{text-decoration-thickness:2px;text-underline-offset:3px}
+.pen-box{border:2.5px solid var(--pen);border-radius:10px;padding:6px 12px;transform:rotate(-1deg)}
+
+/* ---- essay map ---- */
+.map{display:grid;gap:16px}
+.mrow{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:center}
+@media (max-width:720px){.mrow{grid-template-columns:1fr;gap:6px}}
+.blk{display:grid;gap:12px;text-align:left;border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:18px 20px;cursor:pointer;min-width:0;position:relative}
+.blk:hover{border-color:var(--accent)}
+.blk[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
+.blk .bt{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.blk .bn{font-family:var(--f-display);font-weight:700;font-size:1.3rem}
+.blk .strip{display:flex;gap:7px;flex-wrap:wrap}
+.blk .strip span{font-size:.88rem;font-weight:700;padding:4px 10px;border-radius:6px}
+.blk.refs{border-style:dashed}
+.badge{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+.b-yes{background:var(--ev-bg);color:var(--ev)}.b-no{background:var(--bk-bg);color:var(--bk)}
+.map[data-notes="off"] .pen-cell{display:none}
+.map[data-notes="off"] .mrow{grid-template-columns:1fr}
+.pen-cell{display:grid;gap:8px;align-content:center}
+.body-group{display:grid;gap:16px;position:relative}
+.map-info{border-left:4px solid var(--accent);background:var(--accent-bg);border-radius:0 10px 10px 0;padding:12px 16px;display:grid;gap:8px;min-height:6em}
+.map-info ul{padding-left:20px;display:grid;gap:4px}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media (max-width:720px){.types{grid-template-columns:1fr 1fr}}
+.type{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px;font-size:.92rem;display:grid;gap:2px}
+.type b{font-family:var(--f-display);font-size:1rem}
+
+/* ---- funnel ---- */
+.funnel{display:grid;gap:6px;justify-items:center}
+.fl-lay{text-align:center;border:0;border-radius:8px;padding:10px 14px;cursor:pointer;font-weight:700;display:grid;gap:2px;max-width:100%}
+.fl-lay small{font-weight:400;font-size:.85rem}
+.fl-lay[aria-pressed="true"]{outline:3px solid currentColor;outline-offset:2px}
+.fl-1{width:100%}.fl-2{width:88%}.fl-3{width:76%}.fl-4{width:64%}.fl-5{width:52%}
+@media (max-width:560px){.fl-2{width:94%}.fl-3{width:88%}.fl-4{width:82%}.fl-5{width:76%}}
+.fl-info{min-height:4.6em;border-left:4px solid var(--accent);padding:10px 14px;background:var(--accent-bg);border-radius:0 8px 8px 0;display:grid;gap:6px}
+
+/* hook switcher */
+.hook-out{display:grid;gap:10px}
+.example{border-radius:10px;padding:12px 16px;background:var(--paper);border:1px solid var(--line)}
+.vs{display:grid;gap:8px}
+.vs-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline}
+.mark{font-weight:700;font-size:1.1rem;width:1.5rem;text-align:center}
+.mark.no{color:var(--err)}.mark.yes{color:var(--ok)}
+.weak{color:var(--err);text-decoration:line-through 2px}
+
+/* warnings */
+.warn{display:flex;gap:14px;align-items:flex-start;background:var(--err-bg);border:2.5px solid var(--err);border-radius:12px;padding:16px 18px}
+.warn-ic{flex:none;display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--err);color:var(--surface);font-weight:700;font-size:1.2rem}
+.warn-h{font-family:var(--f-display);font-weight:700;font-size:1.2rem;color:var(--err);margin-bottom:4px}
+.warn p{max-width:70ch}
+.warn > div{display:grid;gap:6px;min-width:0}
+.stop{position:relative;display:inline-block;font-weight:700;color:var(--err);padding:0 .1em}
+.stop::after{content:"";position:absolute;inset:-3px -2px;border-radius:50%;border:2px solid var(--err);opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:no-preference){
+  .warn.seen{animation:wshake .7s ease-in-out 1}
+  .warn.seen .warn-ic{animation:icpop .45s ease-out 0s 2,icglow 2.8s ease-in-out 1s infinite}
+  .stop{animation:stopbounce 3.6s ease-in-out infinite}
+  .stop::after{animation:stopring 3.6s ease-out infinite}
+}
+@keyframes wshake{0%,100%{transform:none}14%{transform:translateX(-7px)}28%{transform:translateX(7px)}42%{transform:translateX(-5px)}56%{transform:translateX(5px)}70%{transform:translateX(-2px)}84%{transform:translateX(2px)}}
+@keyframes icpop{0%,100%{transform:scale(1)}45%{transform:scale(1.35)}}
+@keyframes icglow{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--err) 55%,transparent)}60%{box-shadow:0 0 0 10px color-mix(in srgb,var(--err) 0%,transparent)}}
+@keyframes stopbounce{0%,62%,100%{transform:none}70%{transform:translateY(-5px) scale(1.18)}78%{transform:none}84%{transform:translateY(-2px)}90%{transform:none}}
+@keyframes stopring{0%,66%{opacity:0;transform:scale(1)}70%{opacity:.9;transform:scale(1)}95%,100%{opacity:0;transform:scale(2.1)}}
+
+/* thesis anatomy */
+.anat{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 3px;font-family:var(--f-ref);font-size:clamp(1.2rem,3.4vw,1.6rem);line-height:1.6}
+.anat button{border:0;padding:1px 4px;border-radius:6px;cursor:pointer;border-bottom:3px solid transparent;font-family:inherit;font-size:inherit;text-align:left}
+.anat .p-tp{background:var(--th-bg);color:var(--th);font-weight:700}
+.anat .p-ps{background:var(--th-bg);color:var(--th)}
+.anat .p-lk{background:none;color:var(--ink)}
+.anat .p-m{background:var(--ts-bg);color:var(--ts);font-weight:600}
+.anat button[aria-pressed="true"]{border-bottom-color:currentColor}
+.anat sup{font-family:var(--f-body);font-size:.55em;font-weight:700}
+.anat-info{min-height:4.4em;border-left:4px solid var(--accent);padding:8px 14px;background:var(--accent-bg);border-radius:0 8px 8px 0}
+.links3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media (max-width:620px){.links3{grid-template-columns:1fr}}
+.l3{border:1.5px solid var(--ts);border-radius:10px;padding:8px 12px;font-size:.92rem;display:grid;gap:2px}
+.l3 b{color:var(--ts)}
+.rules{display:grid;gap:12px}
+.rule{display:grid;gap:8px}
+.rule h3{display:flex;gap:10px;align-items:baseline}
+.rule h3 .n{flex:none;display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--th);color:var(--surface);font-family:var(--f-body);font-size:.9rem}
+
+/* direct vs indirect thesis */
+.tt-ctrl{display:flex;flex-wrap:wrap;gap:6px}
+.tt-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.tt-grid{grid-template-columns:1fr}}
+.tt{border:2px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:10px;align-content:start;background:var(--surface);transition:opacity .25s,border-color .25s}
+.tt h3{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.tt .tag2{font-family:var(--f-body);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;background:var(--bk-bg);color:var(--bk)}
+.tt ul{padding-left:20px;display:grid;gap:4px;font-size:.96rem}
+.tt-grid[data-on="ind"] .tt.ind,.tt-grid[data-on="dir"] .tt.dir{border-color:var(--th);box-shadow:0 0 0 3px var(--th-bg)}
+.tt-grid[data-on="ind"] .tt.dir,.tt-grid[data-on="dir"] .tt.ind{opacity:.5}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:620px){.three{grid-template-columns:1fr}}
+.three div{border-radius:10px;padding:10px 12px;background:var(--th-bg);display:grid;gap:2px;font-size:.94rem}
+.three b{color:var(--th);font-family:var(--f-display);font-size:1.05rem}
+/* sorter */
+.sort{display:grid;gap:10px}
+.si{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:10px}
+.si-t{font-family:var(--f-ref);font-size:1.08rem}
+.si-b{display:flex;gap:8px;flex-wrap:wrap}
+.sbtn{border:1.5px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 14px;font-weight:700;cursor:pointer}
+.sbtn:hover{border-color:var(--accent)}
+.si.right{border-color:var(--ok);background:var(--ok-bg)}
+.si.wrong{border-color:var(--err);background:var(--err-bg)}
+.si-msg{font-size:.95rem}
+
+/* body paragraph */
+.recipe{display:grid;gap:6px;counter-reset:st}
+.rc{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:start;padding:8px 12px;border-radius:8px}
+.rc .lab{font-weight:700;border-radius:6px;padding:2px 8px;font-size:.9rem;white-space:nowrap}
+.rc.rep{border:1.5px dashed var(--line);margin-left:22px}
+.ver-out{display:grid;gap:10px}
+.fb{border-left:4px solid var(--c,var(--accent));background:var(--cb,var(--accent-bg));border-radius:0 8px 8px 0;padding:10px 14px;font-size:.97rem}
+.fb.bad{--c:var(--err);--cb:var(--err-bg)}.fb.good{--c:var(--ok);--cb:var(--ok-bg)}.fb.mid{--c:var(--hk);--cb:var(--hk-bg)}
+.fmt{display:grid}
+.fmt .fmt-list{grid-template-columns:1fr 1fr;column-gap:28px}
+@media (max-width:720px){.fmt .fmt-list{grid-template-columns:1fr}}
+.fmt .panel{align-content:start}
+.ttl{font-family:var(--f-ref);font-weight:700}
+.fmt-list{margin:0;padding-left:20px;display:grid;gap:10px;font-size:.97rem}
+.fmt-list b:first-child{display:block;font-family:var(--f-display);font-size:1.02rem}
+.why4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:860px){.why4{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.why4{grid-template-columns:1fr}}
+.why4 div{display:grid;gap:4px;align-content:start;border-radius:10px;padding:12px 14px;background:var(--ev-bg);font-size:.94rem}
+.why4 b{color:var(--ev);font-family:var(--f-display);font-size:1.05rem}
+.rel .panel{align-content:start}
+.smap{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:760px){.smap{grid-template-columns:1fr}}
+.smap > div{border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:8px;align-content:start}
+.smap > div > b{font-family:var(--f-display);font-size:1.05rem;color:var(--ts)}
+.smap > div > span{display:grid;gap:2px;font-size:.9rem;color:var(--muted)}
+.smap .cite{font-family:var(--f-ref);font-size:1rem;white-space:normal;justify-self:start}
+.ver-top{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between}
+.ver-prog{font-weight:700;font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.ver-prog.done{color:var(--ok)}
+.vchip.seen::after{content:" ✓";color:var(--ok)}
+.vchip.seen[aria-pressed="true"]::after{color:inherit}
+.nextv{justify-self:start;border:0;background:var(--accent);color:var(--surface);font-weight:700;border-radius:999px;padding:10px 18px;cursor:pointer;font-size:.98rem}
+.nextv:hover{filter:brightness(1.1)}
+@media (prefers-reduced-motion:no-preference){.nextv{animation:nudge 2.4s ease-in-out 1s infinite}}
+@keyframes nudge{0%,80%,100%{transform:none}86%{transform:translateX(5px)}92%{transform:translateX(0)}96%{transform:translateX(3px)}}
+.lockwrap{position:relative;display:grid}
+.lock-body{transition:filter .4s,opacity .4s}
+.lockwrap[data-locked="1"] .lock-body{filter:blur(6px);opacity:.45;pointer-events:none;user-select:none}
+.lock-msg{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;gap:4px;text-align:center;background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:16px 22px;box-shadow:0 10px 28px -14px rgba(10,15,30,.5);width:min(92%,380px)}
+.lock-msg b{font-family:var(--f-display);font-size:1.2rem;color:var(--accent)}
+.lockwrap[data-locked="0"] .lock-msg{border-color:var(--ok)}
+.lockwrap[data-locked="0"] .lock-msg b{color:var(--ok)}
+.seq{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);background:var(--ok-bg);border-radius:6px;padding:2px 7px;align-self:start;margin-top:.3em;min-width:3.6rem;text-align:center}
+.why-list{margin:8px 0 0;padding-left:20px;display:grid;gap:8px}
+.why-list li > span:first-child,.why-list li > b:first-child{margin-right:6px}
+.bars{display:grid;gap:8px}
+.bar-row{display:grid;grid-template-columns:4.5rem minmax(0,1fr) 5.8rem;gap:10px;align-items:center;font-size:.92rem}
+.bar-track{height:14px;border-radius:7px;background:var(--line);overflow:hidden}
+.bar-fill{height:100%;background:var(--ts);border-radius:7px}
+.bar-n{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--muted);text-align:right}
+
+/* evidence tasks */
+.task{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:12px}
+.task-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center}
+.gap{display:inline-block;min-width:8ch;border-bottom:2px dashed var(--muted);color:var(--muted);font-family:var(--f-body);font-size:.9rem}
+.gap.filled{border:0;color:inherit;font-family:inherit;font-size:inherit}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:8px;padding:10px 14px;cursor:pointer;font-family:var(--f-ref);font-size:1.02rem;display:flex;gap:10px;align-items:baseline}
+.opt:hover{border-color:var(--accent)}
+.opt .ol{font-family:var(--f-body);font-weight:700;color:var(--muted);flex:none}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.wrong{border-color:var(--err);background:var(--err-bg)}
+.opt[disabled]{cursor:default}
+.src-list{padding-left:20px;display:grid;gap:2px;margin:4px 0 8px}
+.step-lbl{font-weight:700;font-size:.92rem}
+
+/* conclusion */
+.wc{display:grid;gap:8px}
+
+/* sample essay */
+.paper{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:28px clamp(16px,5vw,48px);box-shadow:0 8px 24px -16px rgba(20,30,60,.35);display:grid;gap:0;position:relative}
+.paper h4{font-family:var(--f-ref);text-align:center;font-weight:700;font-size:1.1rem;margin:0 0 4px}
+.paper .pgno{position:absolute;top:12px;right:16px;font-family:var(--f-ref);font-size:.92rem;color:var(--muted)}
+.essay .ep{font-family:var(--f-ref);font-size:1.02rem;line-height:2;text-indent:2.2em;margin:0;position:relative}
+.ep-tag{position:absolute;left:-2.1em;top:.35em;text-indent:0;font-family:var(--f-body);font-size:.66rem;font-weight:700;color:var(--muted);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:620px){.ep-tag{display:none}}
+.sn{cursor:pointer;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sn:hover{background:var(--accent-bg)}
+.sn.sel{outline:2px solid var(--accent);outline-offset:1px}
+.essay[data-hl~="hk"] .sn[data-r="hk"]{background:var(--hk-bg);color:var(--hk)}
+.essay[data-hl~="bk"] .sn[data-r="bk"]{background:var(--bk-bg);color:var(--bk)}
+.essay[data-hl~="th"] .sn[data-r="th"],.essay[data-hl~="th"] .sn[data-r="rs"]{background:var(--th-bg);color:var(--th)}
+.essay[data-hl~="ts"] .sn[data-r="ts"],.essay[data-hl~="ts"] .sn[data-r="sm"]{background:var(--ts-bg);color:var(--ts)}
+.essay[data-hl~="sp"] .sn[data-r="sp"]{text-decoration:underline 2px var(--ink);text-underline-offset:4px}
+.essay[data-hl~="ev"] .sn[data-r="ev"]{background:var(--ev-bg);color:var(--ev)}
+.essay[data-hl~="an"] .sn[data-r="an"]{background:var(--an-bg);color:var(--an)}
+.essay[data-hl~="cs"] .sn[data-r="cs"]{outline:1.5px dashed var(--cs);outline-offset:1px;color:var(--cs)}
+.essay[data-hl~="ft"] .sn[data-r="ft"]{background:var(--ft-bg);color:var(--ft)}
+.essay .cite{border-bottom-width:2px}
+.ess-tip{position:absolute;z-index:3;pointer-events:none;font-family:var(--f-body);font-size:.8rem;font-weight:700;padding:4px 10px;border-radius:6px;white-space:nowrap;color:var(--surface);background:var(--tc,var(--accent));box-shadow:0 4px 12px -4px rgba(10,15,30,.45)}
+.ess-tip::after{content:"";position:absolute;left:14px;bottom:-5px;border:5px solid transparent;border-bottom:0;border-top-color:var(--tc,var(--accent))}
+.t-hk{--tc:var(--hk)}.t-bk{--tc:var(--bk)}.t-th{--tc:var(--th)}.t-ts{--tc:var(--ts)}.t-ev{--tc:var(--ev)}.t-an{--tc:var(--an)}.t-cs{--tc:var(--cs)}.t-ft{--tc:var(--ft)}.t-sp{--tc:var(--ink)}
+@media (prefers-reduced-motion:no-preference){.ess-tip:not([hidden]){animation:fadein .15s ease-out}}
+.ttl-h{position:relative}
+.ttl-btn{border:0;background:none;font:inherit;color:inherit;cursor:pointer;padding:2px 8px;border-radius:6px;text-align:center}
+.ttl-btn:hover,.ttl-btn:focus-visible{background:var(--accent-bg);outline:2px dashed var(--accent);outline-offset:2px}
+.ttl-hint{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);z-index:4;white-space:nowrap;font-family:var(--f-body);font-size:.82rem;font-weight:700;color:var(--surface);background:var(--accent);padding:5px 12px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .15s;box-shadow:0 6px 14px -6px rgba(10,15,30,.5)}
+.ttl-h:hover .ttl-hint,.ttl-btn:focus-visible + .ttl-hint{opacity:1}
+@media (prefers-reduced-motion:no-preference){.ttl-h:hover .ttl-hint,.ttl-btn:focus-visible + .ttl-hint{animation:hintbounce .9s ease-in-out infinite}}
+@keyframes hintbounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}
+@media (max-width:520px){.ttl-hint{white-space:normal;width:max-content;max-width:86vw;text-align:center}}
+.prof.flash .prof-board{outline:4px solid var(--chalk-y);outline-offset:4px}
+.ess-info{min-height:3.4em;border-left:4px solid var(--accent);padding:8px 14px;background:var(--accent-bg);border-radius:0 8px 8px 0;font-size:.97rem}
+.hl-btns{display:flex;flex-wrap:wrap;gap:6px}
+.hb{--c:var(--accent);--cb:var(--accent-bg);font-size:.86rem;font-weight:700;padding:6px 11px;border-radius:8px;cursor:pointer;background:var(--cb);color:var(--c);border:2px solid var(--c)}
+.hb[aria-pressed="true"]{background:var(--c);color:var(--surface)}
+.hb.h-hk{--c:var(--hk);--cb:var(--hk-bg)}.hb.h-bk{--c:var(--bk);--cb:var(--bk-bg)}.hb.h-th{--c:var(--th);--cb:var(--th-bg)}.hb.h-ts{--c:var(--ts);--cb:var(--ts-bg)}
+.hb.h-sp{--c:var(--ink);--cb:var(--surface)}.hb.h-ev{--c:var(--ev);--cb:var(--ev-bg)}.hb.h-an{--c:var(--an);--cb:var(--an-bg)}.hb.h-cs{--c:var(--cs);--cb:var(--surface)}.hb.h-ft{--c:var(--ft);--cb:var(--ft-bg)}
+.refs-page .ref{font-family:var(--f-ref);font-size:1rem;line-height:2;padding-left:2.2em;text-indent:-2.2em;overflow-wrap:anywhere}
+.fake-url{color:var(--link);text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
+
+/* mistakes */
+.mk-bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center}
+.score{font-weight:700;font-variant-numeric:tabular-nums}
+.mk-list{display:grid;gap:12px}
+.mk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:10px}
+.mk-top{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.cat{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--bk-bg);color:var(--bk)}
+.mk-line{font-family:var(--f-ref);font-size:1.08rem;line-height:1.9;overflow-wrap:anywhere}
+.tok{border:0;background:none;padding:1px 2px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:inherit;line-height:inherit;text-align:left;border-bottom:1.5px dotted var(--muted)}
+.tok:hover{background:var(--accent-bg)}
+.tok.nope{background:var(--bk-bg)}
+@media (prefers-reduced-motion:no-preference){.tok.nope{animation:shake .3s}}
+@keyframes shake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.mk.done .tok{cursor:default;border-bottom:0}
+del.bad{background:var(--err-bg);color:var(--err);text-decoration:line-through 2px;border-radius:4px;padding:0 3px}
+ins.good{background:var(--ok-bg);color:var(--ok);text-decoration:none;border-radius:4px;padding:0 3px;font-weight:600;border-bottom:2px solid var(--ok)}
+ins.good.rm{font-family:var(--f-body);font-size:.85rem;font-style:italic}
+.mk-msg{font-size:.95rem}
+.mk-msg.try{color:var(--muted)}
+.fixbox{border-left:4px solid var(--ok);background:var(--ok-bg);border-radius:0 8px 8px 0;padding:10px 14px;font-size:.96rem}
+.linkbtn{border:0;background:none;color:var(--accent);font-weight:700;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px}
+
+/* quiz */
+.q{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:10px}
+.q-prompt{font-weight:700}
+.q-exp{font-size:.96rem;border-left:4px solid var(--accent);background:var(--accent-bg);border-radius:0 8px 8px 0;padding:8px 12px}
+.q-score{font-size:1.1rem;font-weight:700}
+
+footer{padding-block:48px 40px;color:var(--muted);font-size:.9rem;display:grid;gap:8px}
+
+/* ---- hero ---- */
+.hero-art{width:100%;height:auto;max-width:100%;overflow:visible}
+.hero-art .pg{fill:var(--paper);stroke:var(--line);stroke-width:1.5}
+.hero-art .pg2{fill:var(--accent-bg);stroke:var(--line)}
+.hero-art .ln{fill:var(--line)}
+.hero-art text{font-family:var(--f-body);font-weight:700;font-size:9px}
+.hero-art .hb-i rect{fill:var(--hk-bg);stroke:var(--hk)}.hero-art .hb-i text{fill:var(--hk)}
+.hero-art .th rect{fill:var(--th-bg);stroke:var(--th)}.hero-art .th text{fill:var(--th)}
+.hero-art .ts rect{fill:var(--ts-bg);stroke:var(--ts)}.hero-art .ts text{fill:var(--ts)}
+.hero-art .ft rect{fill:var(--ft-bg);stroke:var(--ft)}.hero-art .ft text{fill:var(--ft)}
+.hero-art .dot{fill:var(--ev)}
+.hero-art .an{fill:var(--an);opacity:.7}
+.hero-art .arr{fill:none;stroke:var(--th);stroke-width:1.8;stroke-dasharray:3 4}
+.hero-art .loop{fill:none;stroke:var(--ft);stroke-width:1.8;stroke-dasharray:3 4}
+.hero-art .ah{fill:var(--th)}.hero-art .ah2{fill:var(--ft)}
+.hero-art .tag rect{fill:var(--surface);stroke:var(--accent);stroke-width:1.5}.hero-art .tag text{fill:var(--accent);font-size:10.5px}
+.hero-art .tag.ev rect{stroke:var(--ev)}.hero-art .tag.ev text{fill:var(--ev);font-family:var(--f-ref)}
+.hero-art .pen-t{font-family:var(--f-hand);fill:var(--pen);font-size:17px;font-weight:600}
+.blkh,.tag{transform-box:fill-box}
+@media (prefers-reduced-motion:no-preference){
+  .blkh{animation:blkin 10s ease-out infinite both}
+  .d1{animation-delay:.3s}.d2{animation-delay:.6s}.d3{animation-delay:.9s}.d4{animation-delay:1.2s}
+  .arr,.loop{animation:draw 10s ease-in-out infinite both;animation-delay:1.7s}
+  .tag{animation:bob 4s ease-in-out infinite}.tag.k2{animation-delay:-1.3s}.tag.k3{animation-delay:-2.6s}
+  .sec-head:hover .sec-ico{animation:wig .5s ease-in-out}
+}
+@keyframes blkin{0%{opacity:0;transform:translateX(22px)}6%{opacity:1;transform:none}86%{opacity:1;transform:none}94%,100%{opacity:0}}
+@keyframes draw{0%,4%{stroke-dashoffset:200;stroke-dasharray:200;opacity:1}16%{stroke-dashoffset:0;stroke-dasharray:200}20%,80%{stroke-dasharray:3 4;opacity:1}88%,100%{opacity:0}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes wig{0%,100%{transform:rotate(0)}30%{transform:rotate(-8deg)}60%{transform:rotate(6deg)}}
+
+/* ---- Professor Cite ---- */
+.prof{margin-block:2px}
+.prof-wide{grid-column:1/-1}
+.prof-row{display:grid;grid-template-columns:150px 66px minmax(0,1fr);align-items:center;max-width:780px}
+@media (max-width:560px){.prof-row{grid-template-columns:96px 36px minmax(0,1fr)}}
+.prof.noimg .prof-row{grid-template-columns:minmax(0,1fr)}
+.prof.noimg .prof-fig,.prof.noimg .prof-arrow{display:none}
+.prof-fig img{border:0;outline:0}
+.prof-fig{position:relative;width:100%;aspect-ratio:300/324;max-width:100%;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 6px 10px rgba(10,15,30,.28))}
+.pf{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+.pb,.ph{position:absolute;top:0;left:0;width:100%;height:100%;display:block;overflow:hidden;pointer-events:none}
+.pb img,.ph img{position:absolute;top:0;left:0;width:200%;height:100%;max-width:none;max-height:none;min-width:0;margin:0;padding:0;border:0;display:block;-webkit-user-drag:none}
+.ph img{left:-100%}
+.ph{transform-origin:74% 98%;-webkit-transform-origin:74% 98%;z-index:1}
+.prof-arrow{width:100%;height:auto;overflow:visible}
+.chalk-l{fill:none;stroke:var(--chalk-line);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;filter:url(#prof-chalk)}
+.prof-board{background:var(--board);border:5px solid var(--board-edge);border-radius:10px;padding:12px 16px 10px;color:var(--chalk);box-shadow:inset 0 0 28px rgba(0,0,0,.4),0 6px 14px -8px rgba(10,15,30,.4);display:grid;gap:4px;min-width:0}
+.prof-name{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--chalk-y);font-weight:700}
+.prof-say{font-family:var(--f-hand);font-size:clamp(1.2rem,3.8vw,1.5rem);font-weight:600;line-height:1.28;margin:0;text-wrap:pretty}
+.prof-more{font-size:.75rem;color:var(--chalk);opacity:.7}
+.kwrap{white-space:nowrap}
+.kw{position:relative;display:inline-block;color:var(--chalk-y);padding:0 .18em;margin:0 .05em}
+.kw-ring{position:absolute;left:-10%;top:-18%;width:120%;height:140%;overflow:visible;pointer-events:none}
+.kw-ring path{fill:none;stroke:var(--chalk-y);stroke-width:2.4;stroke-linecap:round;vector-effect:non-scaling-stroke;filter:url(#prof-chalk)}
+@media (prefers-reduced-motion:no-preference){
+  .prof.live .prof-fig{animation:profin .55s cubic-bezier(.25,1.8,.5,1) both}
+  .prof.live .pf{transform-origin:50% 100%;animation:profhop 3s ease-in-out .6s infinite}
+  .prof.live .ph{animation:profpoint 3s ease-in-out .3s infinite}
+  .prof.live .prof-arrow{animation:arrownudge 3s ease-in-out .3s infinite}
+  .prof.live .chalk-l{stroke-dasharray:130;animation:chalkdraw .5s ease-out .4s both}
+  .prof.live .chalk-l.a2{animation-delay:.8s}
+  .prof.live .prof-board{animation:boardin .4s ease-out .55s both}
+  .prof.live .kw-ring path{stroke-dasharray:300;animation:ringdraw .7s ease-out 1s both}
+}
+@keyframes profin{from{opacity:0;transform:translateY(30px) scale(.55) rotate(-10deg)}to{opacity:1;transform:none}}
+@keyframes profbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+@keyframes profpoint{0%,48%,100%{transform:rotate(0)}6%{transform:rotate(-18deg)}12%{transform:rotate(9deg)}18%{transform:rotate(-18deg)}24%{transform:rotate(9deg)}30%{transform:rotate(-18deg)}36%{transform:rotate(8deg)}42%{transform:rotate(-5deg)}}
+@keyframes profhop{0%,55%,100%{transform:translateY(0) rotate(0) scale(1)}8%{transform:translateY(2px) scale(1.03,.96)}18%{transform:translateY(-14px) rotate(-3deg) scale(.98,1.03)}28%{transform:translateY(0) scale(1.03,.97)}36%{transform:translateY(-6px) rotate(2deg)}44%{transform:translateY(0) rotate(0)}}
+@keyframes arrownudge{0%,48%,100%{transform:translateX(0)}12%{transform:translateX(8px)}24%{transform:translateX(0)}36%{transform:translateX(6px)}}
+@keyframes profwag{from{transform:rotate(-9deg)}to{transform:rotate(7deg)}}
+@keyframes chalkdraw{from{stroke-dashoffset:130}to{stroke-dashoffset:0}}
+@keyframes ringdraw{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
+@keyframes boardin{from{opacity:0;transform:translateX(-10px) scale(.96)}to{opacity:1;transform:none}}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="prof-chalk"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<div class="wrap">
+
+<!--PART:00-intro-header-->
+<header class="top">
+  <div class="hero-text">
+    <span class="eyebrow">Researched essay · student guide · Created by Aj. Val</span>
+    <h1>Five-Paragraph Expository Essay Lab</h1>
+    <p class="lede">A researched essay has <b>five paragraphs</b> with five different jobs: one introduction, three body paragraphs and one conclusion. Your evidence comes from research, so every fact you borrow needs an <b>APA in-text citation</b>. Each job has its own colour on this page. Tap, switch and practise.</p>
+    <div class="legend" aria-label="Colour key">
+      <span class="key k-hk">Hook</span><span class="key k-bk">Background</span><span class="key k-th">Thesis</span><span class="key k-ts">Topic sentence</span><span class="key k-ev">Evidence + citation</span><span class="key k-an">Analysis</span><span class="key k-cs">Concluding sentence</span><span class="key k-ft">Final thought</span>
+    </div>
+  </div>
+  <svg class="hero-art" viewBox="0 0 360 290" role="img" aria-label="Illustration: an essay page with five blocks. The thesis at the end of the introduction points to three body paragraphs, each with citations. The conclusion loops back to the thesis.">
+    <rect class="pg2" x="58" y="18" width="232" height="262" rx="9" transform="rotate(4 174 149)"/>
+    <rect class="pg" x="46" y="10" width="232" height="266" rx="9"/>
+    <g class="blkh"><g class="hb-i"><rect x="62" y="24" width="56" height="16" rx="5"/><text x="73" y="35">Hook</text></g>
+      <rect class="ln" x="124" y="29" width="138" height="5" rx="2.5"/><rect class="ln" x="62" y="46" width="200" height="5" rx="2.5"/>
+      <g class="th"><rect x="62" y="57" width="200" height="16" rx="5"/><text x="129" y="68">Thesis statement</text></g></g>
+    <g class="blkh d1"><g class="ts"><rect x="62" y="90" width="120" height="15" rx="5"/><text x="70" y="101">Topic sentence 1</text></g>
+      <rect class="ln" x="62" y="110" width="200" height="5" rx="2.5"/><circle class="dot" cx="242" cy="112.5" r="4"/><rect class="an" x="62" y="120" width="140" height="5" rx="2.5"/></g>
+    <g class="blkh d2"><g class="ts"><rect x="62" y="136" width="120" height="15" rx="5"/><text x="70" y="147">Topic sentence 2</text></g>
+      <rect class="ln" x="62" y="156" width="200" height="5" rx="2.5"/><circle class="dot" cx="242" cy="158.5" r="4"/><rect class="an" x="62" y="166" width="140" height="5" rx="2.5"/></g>
+    <g class="blkh d3"><g class="ts"><rect x="62" y="182" width="120" height="15" rx="5"/><text x="70" y="193">Topic sentence 3</text></g>
+      <rect class="ln" x="62" y="202" width="200" height="5" rx="2.5"/><circle class="dot" cx="242" cy="204.5" r="4"/><rect class="an" x="62" y="212" width="140" height="5" rx="2.5"/></g>
+    <g class="blkh d4"><rect class="ln" x="62" y="230" width="200" height="5" rx="2.5"/>
+      <g class="ft"><rect x="62" y="242" width="120" height="16" rx="5"/><text x="80" y="253">Final thought</text></g></g>
+    <path class="arr" d="M262 65 C 300 70, 300 92, 184 97"/><path class="arr" d="M262 65 C 312 80, 312 140, 184 143"/><path class="arr" d="M262 65 C 324 90, 324 186, 184 189"/>
+    <path class="loop" d="M60 248 C 18 230, 18 80, 60 66"/>
+    <g class="tag ev"><rect x="290" y="104" width="68" height="22" rx="11"/><text x="297" y="119">(EPIC, 2025)</text></g>
+    <g class="tag k2"><rect x="296" y="196" width="40" height="22" rx="11"/><text x="306" y="211">×3</text></g>
+    <g class="tag k3"><rect x="0" y="120" width="40" height="22" rx="11"/><text x="9" y="135">APA</text></g>
+    <text class="pen-t" x="186" y="252">no citations</text>
+  </svg>
+  <div class="prof prof-wide" data-prof="welcome"></div>
+</header>
+
+<nav class="sec" aria-label="Sections">
+  <a href="#map">Essay map</a><a href="#intro">Introduction</a><a href="#thesis">Thesis</a><a href="#body">Body paragraphs</a><a href="#evidence">Evidence &amp; APA</a><a href="#conclusion">Conclusion</a><a href="#sample">Sample essay</a><a href="#mistakes">Spot the mistake</a><a href="#quiz">Quiz</a>
+</nav>
+<!--/PART-->
+
+<!--PART:01-essay-map-->
+<section id="map">
+  <div class="sec-head">
+    <span class="eyebrow">Part 1</span>
+    <h2>The essay map</h2>
+    <p>The word <b>expose</b> means to uncover something and show its true nature. An <b>expository essay</b> explains, clarifies or analyses a topic so the reader understands it better. It can borrow from many essay types you already know:</p>
+  </div>
+  <div class="types">
+    <div class="type"><b>Descriptive</b><span class="muted">describes with the senses</span></div>
+    <div class="type"><b>Process</b><span class="muted">explains steps in order</span></div>
+    <div class="type"><b>Compare / contrast</b><span class="muted">shows how two things differ</span></div>
+    <div class="type"><b>Cause / effect</b><span class="muted">explains why and what happens</span></div>
+    <div class="type"><b>Problem / solution</b><span class="muted">presents a problem and fixes</span></div>
+    <div class="type"><b>Argumentative</b><span class="muted">takes a position on an issue</span></div>
+  </div>
+  <p class="note">Your <b>research evidence</b> decides the content and order. The goal stays the same: the reader finishes with a better understanding of the topic.</p>
+
+  <div class="prof" data-prof="map"></div>
+
+  <div class="panel">
+    <div class="mk-bar">
+      <h3>Tap a block to see its job</h3>
+      <div class="seg-ctrl" role="group" aria-label="Teacher's notes">
+        <button class="chip" id="notesOn" aria-pressed="true">Aj. Val's notes on</button>
+        <button class="chip" id="notesOff" aria-pressed="false">Notes off</button>
+      </div>
+    </div>
+    <div class="map" id="essayMap" data-notes="on">
+      <div class="mrow">
+        <button class="blk" data-b="intro" aria-pressed="true">
+          <span class="bt"><span class="bn">1 · Introduction</span><span class="badge b-yes">Citations: yes, for facts</span></span>
+          <span class="strip"><span class="s-hk">Hook</span><span class="s-bk">Background</span><span class="s-bk">Key words</span><span class="s-th">Thesis (last)</span></span>
+        </button>
+        <div class="pen-cell"><span class="pen">history · background info · how widespread?</span><span class="pen">purpose of your essay: <u>clearly stated here</u></span></div>
+      </div>
+      <div class="mrow">
+        <div class="body-group">
+          <button class="blk" data-b="b1"><span class="bt"><span class="bn">2 · Body paragraph 1</span><span class="badge b-yes">Citations: must</span></span>
+            <span class="strip"><span class="s-ts">Topic sentence</span><span class="s-ev">Evidence</span><span class="s-an">Analysis</span><span class="s-cs">Concluding</span></span></button>
+          <button class="blk" data-b="b2"><span class="bt"><span class="bn">3 · Body paragraph 2</span><span class="badge b-yes">Citations: must</span></span>
+            <span class="strip"><span class="s-ts">Topic sentence</span><span class="s-ev">Evidence</span><span class="s-an">Analysis</span><span class="s-cs">Concluding</span></span></button>
+          <button class="blk" data-b="b3"><span class="bt"><span class="bn">4 · Body paragraph 3</span><span class="badge b-yes">Citations: must</span></span>
+            <span class="strip"><span class="s-ts">Topic sentence</span><span class="s-ev">Evidence</span><span class="s-an">Analysis</span><span class="s-cs">Concluding</span></span></button>
+        </div>
+        <div class="pen-cell">
+          <span class="pen pen-box">YOU MUST HAVE correctly cited in-text citations</span>
+          <span class="pen">State your reason → explain the evidence → give examples <b>×3</b></span>
+          <span class="pen">evenly spaced · <u>equal in size</u></span>
+          <span class="pen">DO NOT repeat your evidence · do not go OFF-topic</span>
+        </div>
+      </div>
+      <div class="mrow">
+        <button class="blk" data-b="concl"><span class="bt"><span class="bn">5 · Conclusion</span><span class="badge b-no">Citations: none</span></span>
+          <span class="strip"><span class="s-th">Restated thesis</span><span class="s-ts">Summary of points</span><span class="s-ft">Final thought</span></span></button>
+        <div class="pen-cell"><span class="pen">the only paragraph that does <u>NOT</u> need citations</span><span class="pen">a complete paragraph, NOT one sentence · FINAL thought</span></div>
+      </div>
+      <div class="mrow">
+        <button class="blk refs" data-b="refs"><span class="bt"><span class="bn">New page · References</span><span class="badge b-yes">Every source listed</span></span>
+          <span class="strip"><span class="s-bk">A to Z</span><span class="s-bk">Hanging indent</span><span class="s-bk">Double-spaced</span></span></button>
+        <div class="pen-cell"><span class="pen">every citation = one entry</span></div>
+      </div>
+    </div>
+    <div class="map-info fade" id="mapInfo" aria-live="polite"></div>
+  </div>
+</section>
+<!--/PART-->
+
+<!--PART:02-introduction-->
+<section id="intro">
+  <div class="sec-head">
+    <span class="eyebrow">Part 2</span>
+    <h2>The introduction</h2>
+    <p>The introduction works like a funnel. It starts wide to catch the reader, then gets narrower until it reaches your <b>thesis statement</b>, the last sentence. Tap each layer.</p>
+  </div>
+  <div class="panel">
+    <div class="funnel" id="funnel" role="group" aria-label="Introduction funnel">
+      <button class="fl-lay fl-1 s-hk" data-f="0" aria-pressed="true">1 · Hook<small>catch the reader's attention</small></button>
+      <button class="fl-lay fl-2 s-bk" data-f="1" aria-pressed="false">2 · Background<small>who, what, when, where, why, how</small></button>
+      <button class="fl-lay fl-3 s-bk" data-f="2" aria-pressed="false">3 · Key words<small>define terms the reader may not know</small></button>
+      <button class="fl-lay fl-4 s-bk" data-f="3" aria-pressed="false">4 · Why it matters<small>the importance of the topic</small></button>
+      <button class="fl-lay fl-5 s-th" data-f="4" aria-pressed="false">5 · Thesis<small>your position + 3 main points</small></button>
+    </div>
+    <div class="fl-info fade" id="flInfo" aria-live="polite"></div>
+  </div>
+
+  <div class="prof" data-prof="hook"></div>
+
+  <div class="panel">
+    <h3>Five kinds of hook</h3>
+    <p class="note">All five examples introduce the same topic: air pollution in Thailand. Notice that a hook with a <b>statistic or a quotation</b> needs a citation too.</p>
+    <div class="seg-ctrl" id="hookChips" role="group" aria-label="Hook types"></div>
+    <div class="hook-out fade" id="hookOut" aria-live="polite"></div>
+  </div>
+
+  <div class="warn" id="qWarn">
+    <span class="warn-ic" aria-hidden="true">!</span>
+    <div>
+      <p class="warn-h">Careful with question hooks</p>
+      <p>A yes/no question is a weak hook. Look at <span class="weak">"Have you ever heard of the moon conspiracy?"</span> The reader can think "No" and stop reading. If you use a question, make it one the reader has to <b>think about</b>, and start answering it in the next sentence. A strong statement or statistic is usually the safer choice.</p>
+    </div>
+  </div>
+</section>
+<!--/PART-->
+
+<!--PART:03-thesis-->
+<section id="thesis">
+  <div class="sec-head">
+    <span class="eyebrow">Part 3</span>
+    <h2>The thesis statement</h2>
+    <p>The thesis is the most important sentence in the essay. It states the <b>purpose</b> of the essay. It names the <b>topic</b> and gives your <b>position</b>. It can also list the <b>main ideas</b> you will develop.</p>
+  </div>
+  <div class="panel">
+    <h3>Indirect or direct?</h3>
+    <p class="note">There are two kinds of thesis statement. Both give the topic and a position. The difference is whether the main points are named.</p>
+    <div class="tt-ctrl" role="group" aria-label="Thesis type">
+      <button class="chip" id="ttInd" aria-pressed="true">Indirect thesis</button>
+      <button class="chip" id="ttDir" aria-pressed="false">Direct thesis</button>
+    </div>
+    <div class="tt-grid" id="ttGrid" data-on="ind">
+      <div class="tt ind">
+        <h3>Indirect thesis <span class="tag2">points not named</span></h3>
+        <p class="prose"><span class="s-th">Air pollution has become one of Thailand's most serious problems for several reasons.</span></p>
+        <ul><li>Gives the topic and the position.</li><li>Says there are reasons, but does not say what they are.</li><li>The reader finds out the main points only in the topic sentences.</li></ul>
+      </div>
+      <div class="tt dir">
+        <h3>Direct thesis <span class="tag2">points named</span></h3>
+        <p class="prose"><span class="s-th">Air pollution has become one of Thailand's most serious problems because</span> <span class="s-ts">it harms public health, damages the economy, and comes from sources that are difficult to control.</span></p>
+        <ul><li>Gives the topic and the position.</li><li>Names all three main points, in the same order as the body paragraphs.</li><li>Works like a map: the reader knows the plan of the essay from the start.</li></ul>
+      </div>
+    </div>
+    <p class="note"><b>Which should you use?</b> For a five-paragraph essay, a direct thesis is usually clearer, because each main point leads straight to one body paragraph. The sample essay on this page uses a direct thesis.</p>
+  </div>
+
+  <div class="panel">
+    <h3>Inside a direct thesis</h3>
+    <p class="note">Tap each part.</p>
+    <div class="anat" id="anat" role="group" aria-label="Parts of a thesis statement"></div>
+    <div class="anat-info fade" id="anatInfo" aria-live="polite"></div>
+    <p class="row-lbl">Each main point becomes one body paragraph</p>
+    <div class="links3">
+      <div class="l3"><b>Point 1 → Body 1</b>harms public health</div>
+      <div class="l3"><b>Point 2 → Body 2</b>damages the economy</div>
+      <div class="l3"><b>Point 3 → Body 3</b>sources are hard to control</div>
+    </div>
+  </div>
+
+  <div class="prof" data-prof="thesis"></div>
+
+  <div class="panel">
+    <h3>The three requirements of a strong thesis</h3>
+    <p class="note">Direct or indirect, every strong thesis statement must meet <b>all three</b> of these requirements. If it breaks one, the whole essay becomes harder to write and to follow.</p>
+    <div class="three"><div><b>1 · One sentence</b>a complete statement, not a question</div><div><b>2 · An opinion</b>something people could agree or disagree with</div><div><b>3 · One idea</b>a single focus that keeps the essay together</div></div>
+  </div>
+  <div class="rules">
+    <div class="panel rule">
+      <h3><span class="n">1</span>One complete sentence, not a question</h3>
+      <div class="vs">
+        <div class="vs-row"><span class="mark no">✗</span><span class="prose">The effects of alcohol.</span></div>
+        <div class="vs-row"><span class="mark no">✗</span><span class="prose">Is alcohol a harmful substance?</span></div>
+        <div class="vs-row"><span class="mark no">✗</span><span class="prose">There are some benefits from alcohol. However, there are also some disadvantages.</span></div>
+        <div class="vs-row"><span class="mark yes">✔</span><span class="prose">The legal drinking age for alcohol should be 21 due to the negative health effects and the impact on society.</span></div>
+      </div>
+    </div>
+    <div class="panel rule">
+      <h3><span class="n">2</span>Give an opinion, not just a fact</h3>
+      <p class="note">A fact leaves nothing to explain. Someone should be able to agree or disagree with your thesis.</p>
+      <div class="vs">
+        <div class="vs-row"><span class="mark no">✗</span><span class="prose">Cows produce milk.</span></div>
+        <div class="vs-row"><span class="mark yes">✔</span><span class="prose">The health benefits of cow's milk for adults should be reconsidered, because many people cannot digest it well and other foods provide the same nutrients.</span></div>
+      </div>
+    </div>
+    <div class="panel rule">
+      <h3><span class="n">3</span>Focus on one idea</h3>
+      <p class="note">Two different ideas split the essay in half. It loses unity.</p>
+      <div class="vs">
+        <div class="vs-row"><span class="mark no">✗</span><span class="prose">Social media harms the mental health of teenagers, and it has also changed the way companies advertise their products.</span></div>
+        <div class="vs-row"><span class="mark yes">✔</span><span class="prose">Social media harms the mental health of teenagers because it encourages unhealthy comparison, reduces sleep, and exposes them to online bullying.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Practice: strong or weak?</h3>
+    <p class="note">Decide for each thesis. If it is weak, the feedback tells you which rule it breaks.</p>
+    <div class="sort" id="sorter"></div>
+    <p class="score" id="sortScore">0 / 6 correct</p>
+  </div>
+</section>
+<!--/PART-->
+
+<!--PART:04-body-paragraphs-->
+<section id="body">
+  <div class="sec-head">
+    <span class="eyebrow">Part 4</span>
+    <h2>Body paragraphs</h2>
+    <p>You write <b>three</b> body paragraphs, one for each main point in your thesis. They are the longest part of the essay. Every body paragraph follows the same recipe.</p>
+  </div>
+  <div class="panel">
+    <div class="recipe">
+      <div class="rc"><span class="lab s-ts">Topic sentence</span><span>States the main idea of the paragraph. It matches one point in your thesis.</span></div>
+      <div class="rc"><span class="lab" style="background:var(--bk-bg);color:var(--ink)">Supporting point</span><span>A smaller idea that supports the topic sentence.</span></div>
+      <div class="rc"><span class="lab s-ev">Evidence + citation</span><span>A fact, statistic or quotation from your research, with an APA in-text citation.</span></div>
+      <div class="rc"><span class="lab s-an">Analysis</span><span>Your critical thinking: what the evidence means and how it supports your point.</span></div>
+      <div class="rc rep"><span class="lab" style="color:var(--muted)">Repeat</span><span class="muted">Supporting point → evidence → analysis, two or three times.</span></div>
+      <div class="rc"><span class="lab s-cs">Concluding sentence</span><span>Sums up the paragraph. Sometimes not necessary.</span></div>
+    </div>
+  </div>
+
+  <div class="prof" data-prof="body"></div>
+
+  <div class="panel">
+    <h3>From weak to strong: the same paragraph three times</h3>
+    <p class="note">Read <b>all three</b> versions, A, B and C. The rest of Part 4 opens when you have seen all three.</p>
+    <div class="ver-top"><div class="seg-ctrl" id="verChips" role="group" aria-label="Paragraph versions"></div><span class="ver-prog" id="verProg" aria-live="polite"></span></div>
+    <div class="ver-out fade" id="verOut" aria-live="polite"></div>
+  </div>
+
+  <div class="lockwrap" id="verLock" data-locked="1">
+  <div class="lock-msg" id="lockMsg"><b>Locked</b><span>Read versions A, B and C above to open this part.</span></div>
+  <div class="grid2 lock-body">
+    <div class="panel">
+      <h3>Keep them equal in size</h3>
+      <p class="note">Each body paragraph should be about the same length. These bars show the three body paragraphs from the sample essay in Part 7.</p>
+      <div class="bars" id="bars"></div>
+    </div>
+    <div class="warn" id="bodyWarn">
+      <span class="warn-ic" aria-hidden="true">!</span>
+      <div>
+        <p class="warn-h">Do not repeat, do not drift</p>
+        <p>Use each piece of evidence <b>once</b>. Do not say the same fact again in new words to fill space. Every sentence must support the topic sentence. If a sentence is about something else, it is <b>off-topic</b>: delete it.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+<!--/PART-->
+
+<!--PART:05-evidence-apa-->
+<section id="evidence">
+  <div class="sec-head">
+    <span class="eyebrow">Part 5</span>
+    <h2>Evidence and APA citations</h2>
+    <p>Research evidence makes your paragraph believable. First, choose <b>more than one reliable source</b> for each body paragraph. Then use APA citations to show the reader where each piece of evidence came from.</p>
+  </div>
+
+  <div class="panel">
+    <h3>Use two or more reliable sources in every body paragraph</h3>
+    <p>One source gives you one point of view. When two or more reliable sources each add evidence to the same point, your paragraph becomes much harder to argue with. Aim for <b>at least two different sources in every body paragraph</b>.</p>
+    <div class="why4">
+      <div><b>Stronger proof</b>Two or more sources that support the same point show that your claim does not depend on one writer's opinion.</div>
+      <div><b>A fuller picture</b>Each source can add something different, for example the number of people affected and the cost.</div>
+      <div><b>Real research</b>Your reader can see that you read widely, not just the first article you found.</div>
+      <div><b>Less risk</b>If one source has an error or goes out of date, your whole paragraph does not fall apart.</div>
+    </div>
+  </div>
+
+  <div class="grid2 rel">
+    <div class="panel">
+      <h3>What is a reliable source?</h3>
+      <p class="note">Ask four questions about every source.</p>
+      <ul class="fmt-list">
+        <li><b>Who wrote it?</b> An expert, a university, a government office or a research centre.</li>
+        <li><b>When was it published?</b> Recent enough for your topic. Statistics older than about five years may be out of date.</li>
+        <li><b>Where was it published?</b> A journal, an official report or a trusted news organisation.</li>
+        <li><b>Does it show its evidence?</b> It gives data, methods or its own references.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Use or avoid?</h3>
+      <div class="vs">
+        <div class="vs-row"><span class="mark yes">✔</span><span>Peer-reviewed journal articles</span></div>
+        <div class="vs-row"><span class="mark yes">✔</span><span>Government, university and research-centre reports</span></div>
+        <div class="vs-row"><span class="mark yes">✔</span><span>Trusted news organisations that name their sources</span></div>
+        <div class="vs-row"><span class="mark no">✗</span><span>Personal blogs, social media posts and videos</span></div>
+        <div class="vs-row"><span class="mark no">✗</span><span>Websites that are selling a product</span></div>
+        <div class="vs-row"><span class="mark no">✗</span><span>Answers from AI chatbots. They are not sources and can invent facts.</span></div>
+        <div class="vs-row"><span class="mark no">✗</span><span>Wikipedia as a final source. Use it to start, then read and cite the original sources it links to.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>The sample essay: two sources per body paragraph</h3>
+    <p class="note">Every body paragraph of the sample essay in Part 7 uses two different, reliable sources.</p>
+    <div class="smap">
+      <div><b>Body 1 · Health</b><span><span class="cite">"Air Pollution Illnesses," 2025</span> news report of government health data</span><span><span class="cite">EPIC, 2025</span> university research institute</span></div>
+      <div><b>Body 2 · Economy</b><span><span class="cite">Kasikorn Research Center, 2023</span> economic research centre</span><span><span class="cite">"Air Pollution Costing Thailand," 2025</span> news report of university research</span></div>
+      <div><b>Body 3 · Sources</b><span><span class="cite">Inlaung et al., 2024</span> peer-reviewed journal</span><span><span class="cite">Ratanavalachai &amp; Trivitayanurak, 2023</span> peer-reviewed journal</span></div>
+    </div>
+  </div>
+
+  <div class="warn" id="oneWarn">
+    <span class="warn-ic" aria-hidden="true">!</span>
+    <div>
+      <p class="warn-h">One source is not enough</p>
+      <p>A body paragraph that cites the same source again and again is only as strong as that one source. Find a second reliable source that adds new evidence to the same point.</p>
+    </div>
+  </div>
+
+  <div class="sec-head"><h3>Two ways to cite</h3><p class="note">Use <b>one</b> of these for each piece of evidence, never both.</p></div>
+  <div class="grid2">
+    <div class="panel">
+      <span class="row-lbl">Narrative citation · author in the sentence</span>
+      <p class="prose">According to <span class="cite">Ratanavalachai and Trivitayanurak (2023)</span>, expressway traffic caused about 32% of the yearly PM2.5 at one location in central Bangkok.</p>
+      <p class="note">Write <b>and</b> between two authors in the sentence. The year goes in brackets right after the names.</p>
+    </div>
+    <div class="panel">
+      <span class="row-lbl">Parenthetical citation · author in brackets</span>
+      <p class="prose">Expressway traffic caused about 32% of the yearly PM2.5 at one location in central Bangkok <span class="cite">(Ratanavalachai &amp; Trivitayanurak, 2023)</span><span class="stop">.</span></p>
+      <p class="note">Write <b>&amp;</b> inside brackets. The <b>full stop goes after</b> the closing bracket.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="row-lbl">Quotation · exact words need a page number</span>
+    <p class="prose">One fact sheet warns that "particulate pollution is the biggest threat to life expectancy in Thailand" <span class="cite">(Energy Policy Institute at the University of Chicago, 2025, p. 1)</span><span class="stop">.</span></p>
+    <p class="note">Use quotations rarely, only when the exact words are powerful. Most evidence should be paraphrased: the idea in your own words, still with a citation. If a web source has no page number, give a paragraph number such as <b>para. 4</b>. For more rules, open the <a href="https://claude.ai/artifact/UMtEpBRFxYU6NWnEpDGtsv" target="_blank" rel="noopener">APA 7 Citation Lab</a>.</p>
+  </div>
+  <div class="panel">
+    <span class="row-lbl">Long group names · introduce the abbreviation once</span>
+    <p class="note">The first time you cite a long organisation name, write it in full and add its abbreviation. After that, use only the abbreviation.</p>
+    <div class="vs">
+      <div class="vs-row"><span class="seq">First</span><span class="prose">Narrative: <span class="cite">Energy Policy Institute at the University of Chicago (EPIC, 2025)</span> states that…</span></div>
+      <div class="vs-row"><span class="seq">First</span><span class="prose">Parenthetical: …in Thailand <span class="cite">(Energy Policy Institute at the University of Chicago [EPIC], 2025)</span>.</span></div>
+      <div class="vs-row"><span class="seq">Later</span><span class="prose">Every later citation: <span class="cite">(EPIC, 2025)</span> or <span class="cite">EPIC (2025)</span></span></div>
+    </div>
+    <p class="note">Inside brackets, the abbreviation goes in <b>square brackets</b>, because you cannot put round brackets inside round brackets. In the References list, always write the full name.</p>
+  </div>
+  <div class="warn" id="aiWarn">
+    <span class="warn-ic" aria-hidden="true">!</span>
+    <div>
+      <p class="warn-h">No citation means plagiarism</p>
+      <p>If a fact, number or idea came from a source, it needs a citation, even if you changed the words. Only your own analysis and common knowledge can stand without one.</p>
+    </div>
+  </div>
+
+  <div class="prof" data-prof="apa"></div>
+
+  <div class="sec-head"><h3>Practice: add the evidence</h3>
+    <p class="note">Like the class slides, but with two sources: first pick the <b>two</b> pieces of evidence that fit the paragraph, then pick the version that cites both sources correctly.</p>
+    <span class="inv">Real sources: every statistic comes from a published article. Open the links to check.</span></div>
+  <div class="mk-list" id="tasks"></div>
+</section>
+<!--/PART-->
+
+<!--PART:06-conclusion-->
+<section id="conclusion">
+  <div class="sec-head">
+    <span class="eyebrow">Part 6</span>
+    <h2>The conclusion</h2>
+    <p>The conclusion closes the essay. It reminds the reader of your thesis, sums up your three main points, and ends with a <b>final thought</b>. It is a complete paragraph, not one sentence.</p>
+  </div>
+  <div class="panel">
+    <div class="recipe">
+      <div class="rc"><span class="lab s-th">Restated thesis</span><span>Your thesis again, in <b>new words</b>. Do not copy it.</span></div>
+      <div class="rc"><span class="lab s-ts">Summary</span><span>The three main points, in one or two sentences.</span></div>
+      <div class="rc"><span class="lab s-ft">Final thought</span><span>Your last idea for the reader. Choose one or more types below.</span></div>
+    </div>
+    <div class="seg-ctrl" id="ftChips" role="group" aria-label="Final thought types"></div>
+    <div class="ver-out fade" id="ftOut" aria-live="polite"></div>
+  </div>
+
+  <div class="prof" data-prof="concl"></div>
+
+  <div class="panel">
+    <h3>Three weak conclusions</h3>
+    <div class="wc">
+      <div class="vs-row"><span class="mark no">✗</span><div><p class="prose">In conclusion, air pollution is bad.</p><p class="note">Only one sentence. A conclusion is a <b>complete paragraph</b>.</p></div></div>
+      <div class="vs-row"><span class="mark no">✗</span><div><p class="prose">In conclusion, smoke from neighbouring countries also makes up about 30% of the PM2.5 in northern Thailand <span class="cite">(Inlaung et al., 2024)</span>.</p><p class="note">New evidence and a citation. The conclusion is the <b>only paragraph with no citations</b>. Put all evidence in the body.</p></div></div>
+      <div class="vs-row"><span class="mark no">✗</span><div><p class="prose">In conclusion, air pollution has become one of Thailand's most serious problems because it harms public health, damages the economy, and comes from sources that are difficult to control.</p><p class="note">The thesis copied word for word. <b>Restate</b> it in new words.</p></div></div>
+    </div>
+  </div>
+</section>
+<!--/PART-->
+
+<!--PART:07-sample-essay-->
+<section id="sample">
+  <div class="sec-head">
+    <span class="eyebrow">Part 7</span>
+    <h2>A complete sample essay</h2>
+    <p>Here is a full five-paragraph essay, colour-coded with the same colours used on this whole page. Hover over (or tap) any sentence to see its label. Use the buttons to show one job at a time, or choose <b>Clean</b> to see it like a real paper.</p>
+    <span class="inv">Real sources: every statistic and quotation comes from a source in the References. Open the links to check them.</span>
+  </div>
+  <div class="prof" data-prof="title"></div>
+  <div class="hl-btns" id="hlBtns" role="group" aria-label="Highlight parts of the essay"></div>
+  <div class="ess-info" id="essInfo" aria-live="polite">Tap a sentence in the essay.</div>
+  <article class="paper essay" id="essay" data-hl="hk bk th ts sp ev an cs ft"><span class="ess-tip" id="essTip" role="status" hidden></span>
+    <span class="pgno">2</span>
+    <h4 class="ttl-h"><button class="ttl-btn" id="ttlBtn" type="button" aria-describedby="ttlHint">Air Pollution in Thailand: A Growing Threat</button><span class="ttl-hint" id="ttlHint" role="tooltip">&uarr; Check Professor Cite&#39;s advice about titles</span></h4>
+    <div id="essayBody"></div>
+  </article>
+  <article class="paper refs-page">
+    <span class="pgno">4</span>
+    <h4>References</h4>
+    <div id="refList"></div>
+  </article>
+  <p class="note">The References list starts on a <b>new page</b>. Every in-text citation in the essay matches one entry here, and every entry is cited in the essay.</p>
+
+  <div class="fmt">
+    <div class="panel">
+      <h3>References page basics</h3>
+      <p class="note">Look at the References page of the sample essay. It follows <b>all seven</b> rules.</p>
+      <ul class="fmt-list">
+        <li><b>New page</b> Start the References list on a separate page after the conclusion.</li>
+        <li><b>Heading</b> Write <b>References</b> at the top, centred and bold. Do not underline it, put it in italics or write "Works Cited".</li>
+        <li><b>A to Z order</b> Order entries by the first author's family name, or by the first main word of the title if there is no author.</li>
+        <li><b>Double-spaced</b> Double-space the whole page, inside and between entries.</li>
+        <li><b>Hanging indent</b> The first line of each entry starts at the left margin. Every line after it is indented 0.5 in (1.27 cm).</li>
+        <li><b>Working links</b> DOIs and URLs are full links that start with https://. Do not put a full stop after a link.</li>
+        <li><b>One-to-one match</b> Every in-text citation has an entry, and every entry is cited in the essay.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!--/PART-->
+
+<!--PART:08-spot-the-mistake-->
+<section id="mistakes">
+  <div class="sec-head">
+    <span class="eyebrow">Part 8</span>
+    <h2>Spot the mistake</h2>
+    <p>Each line has <b>one</b> mistake. Tap the part that is wrong. You will see the fix and the reason.</p>
+  </div>
+  <div class="mk-bar">
+    <div class="seg-ctrl" id="mkFilter" role="group" aria-label="Filter mistakes"></div>
+    <span class="score" id="mkScore">0 / 10 found</span>
+  </div>
+  <div class="mk-list" id="mkList"></div>
+  <button class="linkbtn" id="mkReset" type="button">Start again</button>
+</section>
+<!--/PART-->
+
+<!--PART:09-quiz-->
+<section id="quiz">
+  <div class="sec-head">
+    <span class="eyebrow">Part 9</span>
+    <h2>Quick quiz</h2>
+    <p>Ten questions. Tap an answer to see if you are right and why.</p>
+  </div>
+  <div class="mk-list" id="quizList"></div>
+  <p class="q-score" id="qScore" aria-live="polite">Score: 0 / 10</p>
+  <button class="linkbtn" id="qReset" type="button">Try again</button>
+
+  <footer>
+    <p>Created by Aj. Val. Based on the EC1 expository essay slides. The sample essay, its examples and Spot the mistake use real, published sources (see the References in Part 7). The practice tasks in Part 5 also use real sources. The quiz uses invented examples.</p>
+    <p>Companion guide: <a href="https://claude.ai/artifact/UMtEpBRFxYU6NWnEpDGtsv" target="_blank" rel="noopener">APA 7 Citation Lab</a>. Rules follow the <a href="https://apastyle.apa.org/style-grammar-guidelines/citations" target="_blank" rel="noopener">APA Style 7th edition guidelines</a>.</p>
+  </footer>
+</section>
+<!--/PART-->
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+// {{...}} marks an APA citation
+const cit=t=>t.replace(/\{\{(.+?)\}\}/g,'<span class="cite">$1</span>');
+
+/* ---------- section icons ---------- */
+const ICONS={
+ map:'<rect class="st" x="11" y="8" width="16" height="5" rx="1.5"/><rect class="st" x="11" y="15.5" width="16" height="3.5" rx="1"/><rect class="st" x="11" y="21" width="16" height="3.5" rx="1"/><rect class="st" x="11" y="26.5" width="16" height="3.5" rx="1"/>',
+ intro:'<path class="st" d="M8 10h22l-8 10v8l-6 2v-10z"/>',
+ thesis:'<circle class="st" cx="19" cy="19" r="10"/><circle class="st" cx="19" cy="19" r="5"/><circle class="fl" cx="19" cy="19" r="1.8"/>',
+ body:'<path class="st" d="M10 11h18M10 17h18M10 23h18M10 29h11"/>',
+ evidence:'<path class="st" d="M13 13a4 4 0 1 0 0 6c0 4-2 6-4 7M25 13a4 4 0 1 0 0 6c0 4-2 6-4 7"/>',
+ conclusion:'<path class="st" d="M10 19h15M20 13l6 6-6 6"/><path class="st" d="M29 11v16"/>',
+ sample:'<path class="st" d="M12 8h10l5 5v17H12z"/><path class="st" d="M15 17h9M15 21h9M15 25h6"/>',
+ mistakes:'<circle class="st" cx="17" cy="17" r="7"/><path class="st" d="M22 22l7 7"/>',
+ quiz:'<circle class="st" cx="19" cy="19" r="10"/><path class="st" d="M16 16a3 3 0 1 1 4 2.8c-1 .4-1 1.2-1 2.2"/><circle class="fl" cx="19" cy="25" r="1.3"/>'
+};
+document.querySelectorAll('section[id]').forEach(sec=>{const eb=sec.querySelector(':scope > .sec-head .eyebrow');const ic=ICONS[sec.id];if(!eb||!ic)return;
+  const w=document.createElement('div');w.className='sec-tag';eb.replaceWith(w);
+  w.innerHTML=`<svg class="sec-ico" viewBox="0 0 38 38" aria-hidden="true"><rect class="bg" width="38" height="38" rx="10"/>${ic}</svg>`;w.appendChild(eb);});
+
+function refade(el){el.classList.remove('fade');void el.offsetWidth;el.classList.add('fade');}
+
+/* ---------- Part 1: essay map ---------- */
+const MAP={
+ intro:{h:'Introduction',jobs:['Hook: catch the reader\'s attention.','Background: some or all of the 5 Ws + H (who, what, when, where, why, how), history, and how widespread the issue is.','Define key words the reader may not know.','Explain why the topic matters.','Thesis statement as the last sentence: the purpose of your essay, clearly stated.'],c:'Background facts and statistics from research need citations here too.'},
+ b1:{h:'Body paragraph 1',jobs:['Topic sentence = main point 1 from your thesis.','Supporting points, each backed by research evidence.','At least two different, reliable sources.','In-text citations for every piece of evidence.','Analysis: tell the reader what the evidence shows.'],c:'You MUST have correctly cited in-text citations.'},
+ b2:{h:'Body paragraph 2',jobs:['Topic sentence = main point 2 from your thesis.','New evidence from at least two reliable sources. Do not repeat evidence from paragraph 1.','Analysis that links the evidence back to your point.','About the same length as the other body paragraphs.'],c:'You MUST have correctly cited in-text citations.'},
+ b3:{h:'Body paragraph 3',jobs:['Topic sentence = main point 3 from your thesis.','Evidence from at least two reliable sources, with citations and analysis.','Stay on topic: every sentence supports this point.','A transition such as "Finally" shows this is the last point.'],c:'You MUST have correctly cited in-text citations.'},
+ concl:{h:'Conclusion',jobs:['Restate your thesis in new words.','Sum up the three main points.','Give a final thought: a prediction, a reflection or a suggestion.','Write a complete paragraph, not one sentence.'],c:'The only paragraph that does NOT need citations. Do not add new evidence.'},
+ refs:{h:'References page',jobs:['Starts on a new page with the bold, centred heading References.','One entry for every source you cited.','Entries in A to Z order, double-spaced, with a hanging indent.'],c:'Every in-text citation must match an entry, and every entry must be cited.'}
+};
+function showMap(k){const d=MAP[k];const el=$('#mapInfo');
+  el.innerHTML=`<h3>${d.h}</h3><ul>${d.jobs.map(j=>`<li>${esc(j)}</li>`).join('')}</ul><p><b>Citations:</b> ${esc(d.c)}</p>`;refade(el);}
+document.querySelectorAll('.blk').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.blk').forEach(x=>x.setAttribute('aria-pressed',x===b));showMap(b.dataset.b);
+  const info=$('#mapInfo');if(window.innerWidth<720){b.insertAdjacentElement('afterend',info);}else{$('#essayMap').insertAdjacentElement('afterend',info);}}));
+showMap('intro');
+$('#notesOn').addEventListener('click',()=>{$('#essayMap').dataset.notes='on';$('#notesOn').setAttribute('aria-pressed','true');$('#notesOff').setAttribute('aria-pressed','false');});
+$('#notesOff').addEventListener('click',()=>{$('#essayMap').dataset.notes='off';$('#notesOn').setAttribute('aria-pressed','false');$('#notesOff').setAttribute('aria-pressed','true');});
+
+/* ---------- Part 2: funnel + hooks ---------- */
+const FUN=[
+ ['Hook','The first sentence. It makes the reader want to keep reading. See the five kinds of hook below.','For several weeks every year, the sky over Bangkok turns grey, and millions of people go to work in face masks.','hk'],
+ ['Background','Give the reader the context: the 5 Ws + H. How long has this been a problem? Where? How widespread is it? Facts from research need a citation.','In 2024, the average PM2.5 level in Thailand was 24 micrograms per cubic metre of air, 4.8 times the World Health Organization standard {{("Air Pollution Illnesses," 2025)}}.','bk'],
+ ['Key words','Define any word your reader may not know. Here, the key term is PM2.5.','The main cause is PM2.5, which means tiny particles of dust that are smaller than 2.5 micrometres.','bk'],
+ ['Why it matters','Tell the reader why this topic is important to them or to society.','Because millions of people breathe this air every day, the issue affects almost everyone in the country.','bk'],
+ ['Thesis statement','The last sentence of the introduction. It states your position and your three main points. Part 3 shows how to write one.','Air pollution has become one of Thailand\'s most serious problems because it harms public health, damages the economy, and comes from sources that are difficult to control.','th']
+];
+function showFun(i){const f=FUN[i];const el=$('#flInfo');el.innerHTML=`<b>${f[0]}</b><span>${esc(f[1])}</span><p class="prose"><span class="s-${f[3]}">${cit(f[2])}</span></p>`;refade(el);}
+document.querySelectorAll('.fl-lay').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.fl-lay').forEach(x=>x.setAttribute('aria-pressed',x===b));showFun(+b.dataset.f);}));
+showFun(0);
+
+const HOOKS=[
+ {n:'Eye-catching statement',d:'Uses an interesting idea, or an idea that opposes your thesis, to introduce the topic.',ex:'For several weeks every year, the sky over Bangkok turns grey, and millions of people go to work in face masks.'},
+ {n:'Surprising statistic',d:'Uses a number that is not widely known. It needs a citation.',ex:'In 2024, 12.3 million people in Thailand were diagnosed with illnesses linked to air pollution {{("Air Pollution Illnesses," 2025)}}.'},
+ {n:'Expert quotation',d:'Starts with the powerful words of an expert. It needs a citation with a page number.',ex:'"Particulate pollution is the biggest threat to life expectancy in Thailand" {{(Energy Policy Institute at the University of Chicago, 2025, p. 1)}}.'},
+ {n:'General truth',d:'Says something about the topic that every reader agrees with at once.',ex:'Everyone needs clean air to live a healthy life.'},
+ {n:'Question',d:'Makes the reader think directly about the topic. Use with care: see the warning below.',ex:'Why do so many Thai families now check an air-quality app before they open a window?',weak:'Have you ever heard of PM2.5?'}
+];
+const hc=$('#hookChips');
+HOOKS.forEach((h,i)=>{const b=document.createElement('button');b.className='chip';b.textContent=h.n;b.setAttribute('aria-pressed',i===0);b.addEventListener('click',()=>{hc.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));showHook(i);});hc.appendChild(b);});
+function showHook(i){const h=HOOKS[i];const el=$('#hookOut');
+  let x=`<p>${esc(h.d)}</p><div class="example prose"><span class="s-hk">${cit(h.ex)}</span></div>`;
+  if(h.weak)x+=`<div class="vs"><div class="vs-row"><span class="mark no">✗</span><span class="prose weak">${esc(h.weak)}</span></div><div class="vs-row"><span class="mark yes">✔</span><span class="prose">${esc(h.ex)}</span></div></div><p class="note">The first question has a yes/no answer. The second one makes the reader think.</p>`;
+  el.innerHTML=x;refade(el);}
+showHook(0);
+
+/* ---------- Part 3: thesis ---------- */
+const ANAT=[
+ ['p-tp','Air pollution','Topic','What the essay is about. Name it clearly at the start.'],
+ ['p-ps','has become one of Thailand\'s most serious problems','Position','Your opinion. Someone could agree or disagree, so it needs proof.'],
+ ['p-lk','because','Link word','Connects your position to your reasons. You can also use "due to" or "since".'],
+ ['p-m','it harms public health,','Main point 1','Becomes the topic of body paragraph 1.','1'],
+ ['p-m','damages the economy,','Main point 2','Becomes the topic of body paragraph 2.','2'],
+ ['p-m','and comes from sources that are difficult to control.','Main point 3','Becomes the topic of body paragraph 3. The thesis ends with a full stop, not a question mark.','3']
+];
+const an=$('#anat');
+ANAT.forEach((a,i)=>{const b=document.createElement('button');b.className=a[0];b.innerHTML=esc(a[1])+(a[4]?`<sup> ${a[4]}</sup>`:'');b.setAttribute('aria-pressed',i===0);
+  b.addEventListener('click',()=>{an.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));showAnat(i);});an.appendChild(b);});
+function showAnat(i){const a=ANAT[i];const el=$('#anatInfo');el.innerHTML=`<b>${a[2]}:</b> ${esc(a[3])}`;refade(el);}
+showAnat(0);
+
+const SORT=[
+ {t:'The effects of social media on students.',ok:false,why:'Requirement 1: this is a topic, not a complete sentence. It has no position.'},
+ {t:'Should Thailand ban single-use plastic bags?',ok:false,why:'Requirement 1: a thesis is a statement, not a question.'},
+ {t:'Online learning helps university students because it saves travel time, lowers costs, and lets them study at their own pace.',ok:true,why:'Strong: one topic, a clear position and three main points.'},
+ {t:'Chiang Mai is a city in northern Thailand.',ok:false,why:'Requirement 2: this is a fact. There is nothing to prove or explain.'},
+ {t:'Fast food is unhealthy, and Bangkok also needs more trains.',ok:false,why:'Requirement 3: two different ideas. The essay would lose unity.'},
+ {t:'Thailand should invest in solar power because it lowers electricity bills, reduces pollution, and creates new jobs.',ok:true,why:'Strong: a position that people could debate, with three main points.'}
+];
+let sortRight=0;
+function buildSort(){const box=$('#sorter');box.innerHTML='';sortRight=0;$('#sortScore').textContent='0 / 6 correct';
+  SORT.forEach(s=>{const d=document.createElement('div');d.className='si';
+    d.innerHTML=`<p class="si-t">${esc(s.t)}</p><div class="si-b"><button class="sbtn" data-v="1">Strong</button><button class="sbtn" data-v="0">Weak</button></div><p class="si-msg" hidden></p>`;
+    d.querySelectorAll('.sbtn').forEach(b=>b.addEventListener('click',()=>{if(d.dataset.done)return;d.dataset.done=1;const right=(b.dataset.v==='1')===s.ok;
+      d.classList.add(right?'right':'wrong');if(right)sortRight++;$('#sortScore').textContent=`${sortRight} / 6 correct`;
+      const m=d.querySelector('.si-msg');m.hidden=false;m.innerHTML=`<b>${right?'Correct.':'Not quite.'}</b> ${esc(s.why)}`;d.querySelectorAll('.sbtn').forEach(x=>x.disabled=true);}));
+    box.appendChild(d);});}
+buildSort();
+
+(()=>{const g=$('#ttGrid'),a=$('#ttInd'),b=$('#ttDir');
+  const set=k=>{g.dataset.on=k;a.setAttribute('aria-pressed',k==='ind');b.setAttribute('aria-pressed',k==='dir');};
+  a.addEventListener('click',()=>set('ind'));b.addEventListener('click',()=>set('dir'));})();
+/* ---------- sample essay data (shared) ---------- */
+const ROLES={hk:'Hook',bk:'Background',th:'Thesis statement',ts:'Topic sentence',sp:'Supporting point',ev:'Evidence + citation',an:'Analysis',cs:'Concluding sentence',rs:'Restated thesis',sm:'Summary of main points',ft:'Final thought'};
+const RDESC={hk:'Catches the reader\'s attention (an eye-catching statement).',bk:'Gives context or defines a key word. Facts from research are cited.',th:'States the position and the three main points. Last sentence of the introduction.',ts:'States the main idea of the paragraph. It matches one point of the thesis.',sp:'A smaller idea that supports the topic sentence.',ev:'Research evidence with an APA in-text citation.',an:'The writer\'s critical thinking: what the evidence means.',cs:'Sums up the paragraph and links back to the thesis.',rs:'The thesis again, in new words.',sm:'Reminds the reader of the three main points. No citations.',ft:'The last idea for the reader: a prediction and a suggestion.'};
+const ESSAY=[
+ {tag:'Introduction',s:[
+  ['hk','For several weeks every year, the sky over Bangkok turns grey, and millions of people go to work in face masks.'],
+  ['bk','The main cause is PM2.5, which means tiny particles of dust that are smaller than 2.5 micrometres.'],
+  ['bk','In 2024, the average PM2.5 level in Thailand was 24 micrograms per cubic metre of air, which is 4.8 times the World Health Organization standard {{("Air Pollution Illnesses," 2025)}}.'],
+  ['bk','The northern region suffers the most, but Bangkok and the northeast are also badly affected {{("Air Pollution Illnesses," 2025)}}.'],
+  ['bk','Because millions of people breathe this air every day, the issue affects almost everyone in the country.'],
+  ['th','Air pollution has become one of Thailand\'s most serious problems because it harms public health, damages the economy, and comes from sources that are difficult to control.']]},
+ {tag:'Body 1',s:[
+  ['ts','The first and most serious effect of air pollution is the damage it causes to people\'s health.'],
+  ['sp','PM2.5 enters the body through the lungs and can then move into the blood.'],
+  ['ev','In 2024, 12.3 million people in Thailand were diagnosed with illnesses linked to air pollution, an increase of 10.1% from the year before {{("Air Pollution Illnesses," 2025)}}.'],
+  ['an','This shows that millions of people become sick every year, and the number is still growing.'],
+  ['sp','Over a whole lifetime, the damage is even greater.'],
+  ['ev','The {{Energy Policy Institute at the University of Chicago (EPIC, 2025)}} states that "particulate pollution is the biggest threat to life expectancy in Thailand" {{(p. 1)}}.'],
+  ['ev','It estimates that the average Thai resident loses 1.8 years of life, and people in the northern provinces could lose 2.7 years {{(EPIC, 2025)}}.'],
+  ['an','Therefore, people who live in the most polluted areas pay the highest price with their health.'],
+  ['cs','Clearly, air pollution is a public health problem, not just an environmental one.']]},
+ {tag:'Body 2',s:[
+  ['ts','In addition to health problems, air pollution also damages Thailand\'s economy.'],
+  ['sp','Tourism is one of the country\'s largest industries, and visitors avoid places with dangerous air.'],
+  ['ev','Before the Songkran holiday in April 2023, the number of Bangkok residents who planned to visit the north, especially Chiang Mai and Chiang Rai, fell by an average of 30% compared with the year before {{(Kasikorn Research Center, 2023)}}.'],
+  ['an','When tourists stay away, local hotels, restaurants and guides lose the income they depend on.'],
+  ['sp','The damage to the wider economy is even greater.'],
+  ['ev','Research by the Puey Ungphakorn Institute for Economic Research estimated that PM2.5 and PM10 cause about 70 billion baht in damage every year in Chiang Mai province alone {{("Air Pollution Costing Thailand," 2025)}}.'],
+  ['an','This means that pollution makes the country poorer as well as less healthy.'],
+  ['cs','As a result, cleaner air would help businesses as much as it would help families.']]},
+ {tag:'Body 3',s:[
+  ['ts','Finally, air pollution in Thailand is difficult to solve because it comes from several sources that are hard to control.'],
+  ['sp','One major source is smoke from fires, and some of it comes from outside the country.'],
+  ['ev','{{Inlaung et al. (2024)}} found that smoke from fires in neighbouring countries made up about 30% of the PM2.5 in northern Thailand during the 2019 dry season, and about 45% in Chiang Rai.'],
+  ['an','Thailand cannot solve this part of the problem alone, because the smoke crosses the border from other countries.'],
+  ['sp','Another major source is traffic in large cities.'],
+  ['ev','In central Bangkok, expressway traffic caused about 32% of the yearly PM2.5 at one nearby location {{(Ratanavalachai &amp; Trivitayanurak, 2023)}}.'],
+  ['an','Because the causes are so different, from forest and farm fires to cars and buses in the city, no single policy can fix the problem.'],
+  ['cs','For this reason, Thailand needs several solutions at the same time.']]},
+ {tag:'Conclusion',s:[
+  ['rs','In conclusion, dirty air is now one of the greatest challenges facing Thailand.'],
+  ['sm','It makes millions of people sick and shortens their lives, it costs the tourism industry a great deal of money, and it comes from fires and traffic, some of them outside Thailand\'s borders.'],
+  ['ft','If the government, its neighbours and city residents do not act together, the grey season will probably grow longer each year.'],
+  ['ft','However, if people support cleaner farming methods and better public transport, Thai cities could see clear skies again.']]}
+];
+const RL=u=>`<a href="${u}" target="_blank" rel="noopener">${u}</a>`;
+const REFS=[
+ 'Air pollution costing Thailand trillions of baht in economic damage. (2025, January 29). <i>The Nation</i>. '+RL('https://www.nationthailand.com/news/general/40045692'),
+ 'Air pollution illnesses in Thailand hit 12.3M in 2024, North worst: NESDC. (2025, February 26). <i>The Nation</i>. '+RL('https://www.nationthailand.com/news/general/40046779'),
+ 'Energy Policy Institute at the University of Chicago. (2025). <i>Thailand fact sheet</i>. Air Quality Life Index. '+RL('https://aqli.epic.uchicago.edu/files/Thailand%20FactSheet_2025_FINAL.pdf'),
+ 'Inlaung, K., Chotamonsak, C., Macatangay, R., &amp; Surapipith, V. (2024). Assessment of transboundary PM2.5 from biomass burning in northern Thailand using the WRF-Chem model. <i>Toxics, 12</i>(7), Article 462. '+RL('https://doi.org/10.3390/toxics12070462'),
+ 'Kasikorn Research Center. (2023, April 10). <i>PM2.5 crisis could get much worse if it is not quickly dealt with</i> (Current Issue No. 3401). '+RL('https://www.kasikornresearch.com/EN/analysis/k-econ/business/Pages/PM25-Pollution-CIS3401-10-04-2023.aspx'),
+ 'Ratanavalachai, T., &amp; Trivitayanurak, W. (2023). Application of a PM2.5 dispersion model in the Bangkok central business district for air quality management. <i>Frontiers in Environmental Science, 11</i>, Article 1237366. '+RL('https://doi.org/10.3389/fenvs.2023.1237366')
+];
+const words=t=>t.replace(/\{\{|\}\}/g,'').trim().split(/\s+/).length;
+
+/* ---------- Part 4: versions + bars ---------- */
+const VERS=[
+ {n:'A · Ideas only',cls:'bad',fb:'Every sentence is a general idea. There are no numbers, no sources and no analysis. Sentences like "PM2.5 is very bad" and "Everyone knows" are vague, so the reader has to simply believe you.',
+  p:[['ts','The first major issue is health.'],['','PM2.5 is very bad for people.'],['','It can go into your body when you breathe.'],['','For example, many people have breathing problems.'],['','Some people also get sick in other ways.'],['','Children and old people are in danger too.'],['','Everyone knows that dirty air is not healthy.'],['cs','This shows that air pollution is a big problem in Thailand.']]},
+ {n:'B · Evidence, no citations',cls:'mid',fb:'Better: there are real numbers and a quotation. But where did "12.3 million", "1.8 years" and the quotation come from? Without citations this is plagiarism, and there is still no analysis to explain what the numbers mean.',
+  p:[['ts','The first and most serious effect of air pollution is the damage it causes to people\'s health.'],['','PM2.5 enters the body through the lungs and can then move into the blood.'],['ev','In 2024, 12.3 million people in Thailand were diagnosed with illnesses linked to air pollution, an increase of 10.1% from the year before.'],['ev','The average Thai resident loses 1.8 years of life because of particulate pollution, and people in the northern provinces could lose 2.7 years.'],['ev','One fact sheet states that "particulate pollution is the biggest threat to life expectancy in Thailand."'],['cs','Clearly, air pollution is a public health problem, not just an environmental one.']]},
+ {n:'C · Strong',cls:'good',fb:'',fbHtml:'<b>Why this paragraph is strong</b><ul class="why-list">'+
+   '<li><span class="s-ts">Topic sentence</span> It names <b>one</b> main point from the thesis (health), so the reader knows exactly what the paragraph is about.</li>'+
+   '<li><b>Clear pattern</b> Supporting point &rarr; evidence &rarr; analysis, repeated twice. Each supporting point is a smaller idea that the evidence then proves.</li>'+
+   '<li><span class="s-ev">Evidence</span> Specific numbers (12.3 million people, 10.1%, 1.8 and 2.7 years) and one short quotation, not vague words like &quot;many&quot; or &quot;bad&quot;.</li>'+
+   '<li><span class="s-ev">Citations</span> Two different sources, each cited correctly in APA: a no-author news article (&quot;Air Pollution Illnesses,&quot; 2025) and a group author (EPIC, 2025). The quotation has a page number.</li>'+
+   '<li><span class="s-an">Analysis</span> After each piece of evidence, the writer explains what it <b>means</b>: millions get sick every year, and people in the most polluted areas pay the highest price. This is the writer&#39;s own critical thinking.</li>'+
+   '<li><span class="s-cs">Concluding sentence</span> It sums up the paragraph and links back to the thesis.</li>'+
+   '<li><b>Unity</b> Every sentence is about health. No evidence is repeated, and nothing goes off-topic.</li></ul>',p:null}
+];
+const vc=$('#verChips');
+const verSeen=new Set();
+function pickVer(i){vc.querySelectorAll('.chip').forEach((x,k)=>x.setAttribute('aria-pressed',k===i));showVer(i);}
+VERS.forEach((v,i)=>{const b=document.createElement('button');b.className='chip vchip';b.textContent=v.n;b.setAttribute('aria-pressed',i===0);b.addEventListener('click',()=>pickVer(i));vc.appendChild(b);});
+const lk=$('#verLock'),lb=lk.querySelector('.lock-body');if(lb)lb.inert=true;
+function verProgress(){const n=verSeen.size;vc.querySelectorAll('.chip').forEach((x,k)=>x.classList.toggle('seen',verSeen.has(k)));
+  $('#verProg').textContent=n<3?`Seen ${n} of 3`:'All 3 seen ✓';$('#verProg').classList.toggle('done',n===3);
+  if(n===3&&lk.dataset.locked==='1'){lk.dataset.locked='0';if(lb)lb.inert=false;const m=$('#lockMsg');m.innerHTML='<b>Unlocked</b><span>Well done. You have read all three versions.</span>';setTimeout(()=>{m.hidden=true;},1600);}}
+function showVer(i){const v=VERS[i];const p=v.p||ESSAY[1].s;const el=$('#verOut');
+  verSeen.add(i);
+  const nxt=[...[0,1,2]].find(k=>!verSeen.has(k));const go=i<2?i+1:nxt;
+  const btn=go!==undefined?`<button class="nextv" type="button" data-go="${go}">Next: see version ${'ABC'[go]} →</button>`:'';
+  el.innerHTML=`<p class="prose example">${p.map(([r,t])=>r&&r!=='sp'?`<span class="s-${r}">${cit(t)}</span>`:cit(t)).join(' ')}</p><div class="fb ${v.cls}">${v.fbHtml||esc(v.fb)}</div>${btn}`;
+  const nb=el.querySelector('.nextv');if(nb)nb.addEventListener('click',()=>pickVer(+nb.dataset.go));
+  refade(el);verProgress();}
+showVer(0);
+(()=>{const counts=[1,2,3].map(k=>ESSAY[k].s.reduce((a,[,t])=>a+words(t),0));const mx=Math.max(...counts);
+  $('#bars').innerHTML=counts.map((c,i)=>`<div class="bar-row"><span>Body ${i+1}</span><span class="bar-track"><span class="bar-fill" style="display:block;width:${(c/mx*100).toFixed(1)}%"></span></span><span class="bar-n">${c} words</span></div>`).join('');})();
+
+/* ---------- Part 5: evidence tasks ---------- */
+const TASKS=[
+ {para:'Bangkok is trying to reduce traffic pollution by changing its public buses.',
+  ev:[{t:'Expressway traffic caused about 32% of the yearly PM2.5 at one location in central Bangkok.',ok:true,why:'Yes. This shows how much traffic adds to the problem.'},
+      {t:'Bangkok is famous for its street food and temples.',ok:false,why:'Off-topic. The paragraph is about buses and traffic pollution, not tourism.'},
+      {t:'The Thai Cabinet approved a 15.35-billion-baht plan to lease electric buses and replace 1,520 old diesel buses.',ok:true,why:'Yes. This is a specific, recent step to change the buses.'}],
+  src:[['Ratanavalachai and Trivitayanurak, 2023 (two authors, journal article)','https://doi.org/10.3389/fenvs.2023.1237366'],
+       ['Puntid Tantivangphaisal, 2025 (one author, Thaiger news article). Tantivangphaisal is the family name','https://thethaiger.com/news/bangkok/bangkok-bets-big-on-ev-buses-in-15-billion-baht-shake-up']],
+  cites:['Expressway traffic caused about 32% of the yearly PM2.5 at one location in central Bangkok (Ratanavalachai & Trivitayanurak, 2023). To reduce this, Puntid (2025) reports that the Thai Cabinet approved a 15.35-billion-baht plan to lease electric buses and replace 1,520 old diesel buses.',
+         'Expressway traffic caused about 32% of the yearly PM2.5 at one location in central Bangkok (Ratanavalachai & Trivitayanurak, 2023). To reduce this, Tantivangphaisal (2025) reports that the Thai Cabinet approved a 15.35-billion-baht plan to lease electric buses and replace 1,520 old diesel buses.',
+         'Expressway traffic caused about 32% of the yearly PM2.5 at one location in central Bangkok (Ratanavalachai and Trivitayanurak, 2023). To reduce this, Tantivangphaisal (2025) reports that the Thai Cabinet approved a 15.35-billion-baht plan to lease electric buses and replace 1,520 old diesel buses.'],cright:1,
+  cWhy:['APA uses the family name (surname) only. Write Tantivangphaisal, not the first name Puntid.','Use "&" inside the brackets, and the family name in the narrative citation.','Inside brackets, join two authors with "&", not "and".']},
+ {para:'Some people believe that any face mask will protect them from haze. Unfortunately, this is not true.',
+  ev:[{t:'In a test in Kathmandu, cloth masks blocked on average only 13% of PM2.5, while N95 masks blocked about 70%.',ok:true,why:'Yes. This compares two kinds of masks with clear numbers.'},
+      {t:'In a test of masks sold in Beijing, only one type let in less than 10% of outside particles when people wore it.',ok:true,why:'Yes. This shows that even many shop masks leak.'},
+      {t:'Masks are now sold in many colours and designs.',ok:false,why:'Off-topic. Colours and designs do not tell us whether masks protect people.'}],
+  src:[['Neupane, Bajracharya and Khatry, 2023 (three authors, journal article)','https://doi.org/10.1155/2023/5144345'],
+       ['Cherrie and eight other authors, 2018 (journal article)','https://doi.org/10.1136/oemed-2017-104765']],
+  cites:['In a test in Kathmandu, cloth masks blocked on average only 13% of PM2.5, while N95 masks blocked about 70% (Neupane, Bajracharya, & Khatry, 2023). In a test of masks sold in Beijing, only one type let in less than 10% of outside particles when people wore it (Cherrie et al., 2018).',
+         'In a test in Kathmandu, cloth masks blocked on average only 13% of PM2.5, while N95 masks blocked about 70% (Neupane et al., 2023). In a test of masks sold in Beijing, only one type let in less than 10% of outside particles when people wore it (Cherrie et al. 2018).',
+         'In a test in Kathmandu, cloth masks blocked on average only 13% of PM2.5, while N95 masks blocked about 70% (Neupane et al., 2023). In a test of masks sold in Beijing, only one type let in less than 10% of outside particles when people wore it (Cherrie et al., 2018).'],cright:2,
+  cWhy:['With three or more authors, write only the first author and "et al."','There must be a comma between "et al." and the year.','Three or more authors become "et al.", followed by a comma and the year.']},
+ {para:'Thailand is trying to stop farmers from burning their sugarcane fields before the harvest.',
+  ev:[{t:'Rice is one of the most popular foods in Thailand.',ok:false,why:'Off-topic. The paragraph is about burning sugarcane, not about food.'},
+      {t:'In the 2023–24 season, about 30% of the sugarcane delivered to sugar mills had been burnt.',ok:true,why:'Yes. This shows how big the problem was.'},
+      {t:'After the government offered 7 billion baht to farmers who cut their cane instead of burning it, about 90% of the cane came from farms that did not burn by January 2025.',ok:true,why:'Yes. This shows that the solution is working.'}],
+  src:[['"Burnt sugarcane volume on declining trend, says cane and sugar board", The Nation, 2025 (news article with no author)','https://nationthailand.com/sustainability/40045324'],
+       ['"Smog clears as Thai sugar mills slash burnt sugarcane purchases", The Nation, 2025 (news article with no author)','https://www.nationthailand.com/news/general/40045644']],
+  cites:['In the 2023–24 season, about 30% of the sugarcane delivered to sugar mills had been burnt ("Burnt Sugarcane Volume," 2025). After the government offered 7 billion baht to farmers who cut their cane instead of burning it, about 90% of the cane came from farms that did not burn by January 2025 ("Smog Clears," 2025).',
+         'In the 2023–24 season, about 30% of the sugarcane delivered to sugar mills had been burnt (The Nation, 2025). After the government offered 7 billion baht to farmers who cut their cane instead of burning it, about 90% of the cane came from farms that did not burn by January 2025 (The Nation, 2025).',
+         'In the 2023–24 season, about 30% of the sugarcane delivered to sugar mills had been burnt (Burnt Sugarcane Volume, 2025). After the government offered 7 billion baht to farmers who cut their cane instead of burning it, about 90% of the cane came from farms that did not burn by January 2025 (Smog Clears, 2025).'],cright:0,
+  cWhy:['There is no author, so use the first few words of the title in quotation marks and title case.','The newspaper is not the author. With no author, use a short title in quotation marks.','An article title needs double quotation marks in the citation.']}
+];
+function buildTasks(){const box=$('#tasks');box.innerHTML='';
+  TASKS.forEach((t,ti)=>{const d=document.createElement('div');d.className='task';let found=0;
+    d.innerHTML=`<div class="task-top"><b>Paragraph ${ti+1}</b><span class="cat">Step 1 of 2</span></div>
+    <p class="prose">${esc(t.para)} <span class="gap">add evidence from two sources here</span></p>
+    <span class="step-lbl">Step 1: Which TWO pieces of evidence fit? Tap both.</span>
+    <div class="opts ev">${t.ev.map((e,i)=>`<button class="opt" data-i="${i}"><span class="ol">${'ABC'[i]}</span><span>${esc(e.t)}</span></button>`).join('')}</div>
+    <p class="mk-msg" hidden></p>
+    <div class="step2" hidden><span class="step-lbl">Step 2: Which version cites both sources correctly?</span>
+    <ul class="note src-list">${t.src.map(([n,u])=>`<li>${esc(n)}. <a href="${u}" target="_blank" rel="noopener">Open source</a></li>`).join('')}</ul>
+    <div class="opts ct">${t.cites.map((c,i)=>`<button class="opt" data-i="${i}"><span class="ol">${i+1}</span><span>${esc(c)}</span></button>`).join('')}</div><p class="mk-msg m2" hidden></p></div>`;
+    const msg=d.querySelector('.mk-msg');
+    d.querySelectorAll('.ev .opt').forEach(b=>b.addEventListener('click',()=>{if(d.dataset.s1||b.classList.contains('right'))return;const e=t.ev[+b.dataset.i];msg.hidden=false;
+      if(e.ok){b.classList.add('right');b.disabled=true;found++;
+        if(found===2){d.dataset.s1=1;d.querySelectorAll('.ev .opt').forEach(x=>x.disabled=true);msg.innerHTML=`<b>Both found.</b> ${esc(e.why)} Now cite them.`;
+          d.querySelector('.cat').textContent='Step 2 of 2';d.querySelector('.step2').hidden=false;}
+        else msg.innerHTML=`<b>One found.</b> ${esc(e.why)} Find one more.`;}
+      else{b.classList.add('wrong');b.disabled=true;msg.innerHTML=`<b>Not this one.</b> ${esc(e.why)}`;}}));
+    d.querySelectorAll('.ct .opt').forEach(b=>b.addEventListener('click',()=>{if(d.dataset.s2)return;const i=+b.dataset.i;const m=d.querySelector('.m2');m.hidden=false;
+      if(i===t.cright){d.dataset.s2=1;b.classList.add('right');d.querySelectorAll('.ct .opt').forEach(x=>x.disabled=true);m.innerHTML=`<b>Correct.</b> ${esc(t.cWhy[i])}`;
+        const g=d.querySelector('.gap');g.classList.add('filled');g.innerHTML=`<span class="s-ev">${esc(t.cites[i])}</span>`;d.querySelector('.cat').textContent='Done ✓';}
+      else{b.classList.add('wrong');m.innerHTML=`<b>Not quite.</b> ${esc(t.cWhy[i])} Try again.`;}}));
+    box.appendChild(d);});}
+buildTasks();
+
+/* ---------- Part 6: final thought ---------- */
+const FT=[
+ ['Prediction','Say what will probably happen in the future.','If the government, farmers and city residents do not act together, the grey season will probably grow longer each year.'],
+ ['Reflection','Say how the issue affects society or individuals.','Clean air is something most people never think about until it is gone, and for many Thai families that day has already come.'],
+ ['Suggestion','Say how society or individuals might respond.','If people support cleaner farming methods and better public transport, Thai cities could see clear skies again.']
+];
+const fc=$('#ftChips');
+FT.forEach((f,i)=>{const b=document.createElement('button');b.className='chip';b.textContent=f[0];b.setAttribute('aria-pressed',i===0);b.addEventListener('click',()=>{fc.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));showFt(i);});fc.appendChild(b);});
+function showFt(i){const f=FT[i];const el=$('#ftOut');el.innerHTML=`<p>${esc(f[1])}</p><p class="prose example"><span class="s-ft">${esc(f[2])}</span></p>`;refade(el);}
+showFt(0);
+
+/* ---------- Part 7: sample essay ---------- */
+(()=>{const body=$('#essayBody');if(!body.isConnected)return;
+  body.innerHTML=ESSAY.map(p=>`<p class="ep"><span class="ep-tag" aria-hidden="true">${p.tag}</span>${p.s.map(([r,t])=>`<span class="sn" data-r="${r}" tabindex="0" role="button">${cit(t)}</span>`).join(' ')}</p>`).join('');
+  $('#refList').innerHTML=REFS.map(r=>`<p class="ref">${r}</p>`).join('');
+  const HB=[['all','Show all'],['hk','Hook'],['bk','Background'],['th','Thesis'],['ts','Topic sentences'],['sp','Supporting points'],['ev','Evidence'],['an','Analysis'],['cs','Concluding sentences'],['ft','Final thought'],['none','Clean']];
+  const box=$('#hlBtns');const ess=$('#essay');
+  HB.forEach(([k,n])=>{const b=document.createElement('button');b.className='hb h-'+k;b.textContent=n;b.setAttribute('aria-pressed',k==='all');
+    b.addEventListener('click',()=>{box.querySelectorAll('.hb').forEach(x=>x.setAttribute('aria-pressed',x===b));ess.dataset.hl=k==='all'?'hk bk th ts sp ev an cs ft':k==='none'?'':k;});box.appendChild(b);});
+  const tip=$('#essTip');let tipT;const TC={hk:'hk',bk:'bk',th:'th',rs:'th',ts:'ts',sm:'ts',ev:'ev',an:'an',cs:'cs',ft:'ft',sp:'sp'};
+  function showTip(s){const r=s.dataset.r;const pr=ess.getBoundingClientRect();const rc=s.getClientRects()[0]||s.getBoundingClientRect();
+    tip.textContent=ROLES[r];tip.className='ess-tip t-'+TC[r];tip.hidden=false;
+    let x=rc.left-pr.left;const w=tip.offsetWidth;x=Math.max(8,Math.min(x,pr.width-w-8));
+    tip.style.left=x+'px';tip.style.top=(rc.top-pr.top-tip.offsetHeight-6)+'px';
+    clearTimeout(tipT);tipT=setTimeout(()=>{tip.hidden=true;},1000);}
+  body.querySelectorAll('.sn').forEach(s=>{s.addEventListener('mouseenter',()=>showTip(s));s.addEventListener('focus',()=>showTip(s));const go=()=>{showTip(s);body.querySelectorAll('.sn').forEach(x=>x.classList.toggle('sel',x===s));const r=s.dataset.r;
+    $('#essInfo').innerHTML=`<b>${ROLES[r]}.</b> ${esc(RDESC[r])}`;};s.addEventListener('click',go);s.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});})();
+
+/* ---------- Part 8: spot the mistake ---------- */
+const MK=[
+ {c:'Thesis',t:['Thailand ','has PM2.5 in the dry season','.'],b:1,f:'should treat PM2.5 as a national emergency because it harms health, tourism and farming',w:'A thesis must give an opinion, not just a fact. A fact leaves nothing to explain.'},
+ {c:'Thesis',t:['Bangkok needs more electric buses because they cut pollution, save fuel and reduce noise',', and Thai food is the best in Asia','.'],b:1,f:'',w:'Focus on one idea. A second, unrelated idea splits the essay.'},
+ {c:'Citations',t:['People in northern Thailand could lose 2.7 years of life expectancy','. (Energy Policy Institute at the University of Chicago, 2025)'],b:1,f:' (Energy Policy Institute at the University of Chicago, 2025).',w:'The full stop goes after the closing bracket, not before it.'},
+ {c:'Citations',t:['According to Inlaung et al. (2024), ','smoke from neighbouring countries made up about 30% of northern Thailand\'s PM2.5',' (Inlaung et al., 2024)','.'],b:2,f:'',w:'The source is already named in the sentence. Cite it once, not twice.'},
+ {c:'Citations',t:['According to ','Ratanavalachai & Trivitayanurak',' (2023), traffic is a major source of PM2.5 in central Bangkok.'],b:1,f:'Ratanavalachai and Trivitayanurak',w:'In a narrative citation, join two authors with "and". Use "&" only inside brackets.'},
+ {c:'Citations',t:['12.3 million',' people in Thailand were diagnosed with illnesses linked to air pollution in 2024 ("Air Pollution Illnesses," 2025).'],b:0,f:'In one report, 12.3 million',w:'APA style does not start a sentence with a numeral. Add words before it.'},
+ {c:'Citations',t:['One fact sheet warns that "particulate pollution is the biggest threat to life expectancy in Thailand" ','(Energy Policy Institute at the University of Chicago, 2025)','.'],b:1,f:'(Energy Policy Institute at the University of Chicago, 2025, p. 1)',w:'A direct quotation needs a page number (or a paragraph number for a web page).'},
+ {c:'Body',t:['Air pollution also damages the economy. ','Bangkok residents\' plans to visit the north fell by 30% before Songkran in 2023 (Kasikorn Research Center, 2023). ','Many tourists also enjoy Thai massage.'],b:2,f:'',w:'Off-topic. The paragraph is about the economic damage of pollution, so every sentence must support that.'},
+ {c:'Body',t:['In 2024, 12.3 million people in Thailand were diagnosed with illnesses linked to air pollution ("Air Pollution Illnesses," 2025). ','In other words, more than twelve million Thais became sick from dirty air that year ("Air Pollution Illnesses," 2025). ','This shows that the problem affects a large part of the population.'],b:1,f:'',w:'Do not repeat your evidence in new words. Use the space for new evidence or analysis.'},
+ {c:'Conclusion',t:['In conclusion, dirty air harms health, money and daily life in Thailand',' (Kasikorn Research Center, 2023)','.'],b:1,f:'',w:'The conclusion is the only paragraph that does not need citations. It restates; it does not add evidence.'}
+];
+let mkFound=0,mkCat='All';
+function buildMk(){const L=$('#mkList');L.innerHTML='';mkFound=0;$('#mkScore').textContent=`0 / ${MK.length} found`;
+  MK.forEach(m=>{const d=document.createElement('div');d.className='mk';d.dataset.c=m.c;
+    d.innerHTML=`<div class="mk-top"><span class="cat">${m.c}</span></div><p class="mk-line">${m.t.map((x,i)=>`<button class="tok" data-i="${i}">${esc(x)}</button>`).join('')}</p><p class="mk-msg try">Tap the wrong part.</p>`;
+    d.querySelectorAll('.tok').forEach(b=>b.addEventListener('click',()=>{if(d.classList.contains('done'))return;const i=+b.dataset.i;
+      if(i===m.b){d.classList.add('done');mkFound++;$('#mkScore').textContent=`${mkFound} / ${MK.length} found`;
+        b.outerHTML=`<del class="bad">${esc(m.t[i])}</del>${m.f?`<ins class="good">${esc(m.f)}</ins>`:'<ins class="good rm">(delete)</ins>'}`;
+        const msg=d.querySelector('.mk-msg');msg.className='fixbox';msg.innerHTML=`<b>Found it.</b> ${esc(m.w)}`;}
+      else{b.classList.remove('nope');void b.offsetWidth;b.classList.add('nope');d.querySelector('.mk-msg').textContent='That part is fine. Look again.';}}));
+    L.appendChild(d);});filterMk();}
+function filterMk(){document.querySelectorAll('#mkList .mk').forEach(d=>d.hidden=!(mkCat==='All'||d.dataset.c===mkCat));}
+const mf=$('#mkFilter');
+['All','Thesis','Citations','Body','Conclusion'].forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.setAttribute('aria-pressed',c==='All');
+  b.addEventListener('click',()=>{mkCat=c;mf.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));filterMk();});mf.appendChild(b);});
+buildMk();$('#mkReset').addEventListener('click',buildMk);
+
+/* ---------- Part 9: quiz ---------- */
+const QUIZ=[
+ {q:'Where does the thesis statement usually go?',o:['The first sentence of the introduction','The last sentence of the introduction','The first sentence of body paragraph 1','The last sentence of the conclusion'],a:1,e:'The introduction narrows like a funnel and ends with the thesis.'},
+ {q:'Which is the strongest thesis statement?',o:['The problem of plastic waste.','Is plastic waste a problem in Thailand?','Thai supermarkets should stop giving free plastic bags because they block drains, harm sea animals, and waste resources.','Plastic is made from oil.'],a:2,e:'It is a complete sentence with a position and three main points.'},
+ {q:'Which paragraph does NOT need in-text citations?',o:['The conclusion','Body paragraph 2','The introduction, if it uses a statistic','Body paragraph 3'],a:0,e:'The conclusion restates and sums up. All evidence belongs in the body.'},
+ {q:'What should the first sentence of a body paragraph be?',o:['A quotation from an expert','A question for the reader','A summary of the whole essay','A topic sentence that matches one point of the thesis'],a:3,e:'The topic sentence tells the reader the main idea of the paragraph.'},
+ {q:'Which sentence is punctuated correctly?',o:['Rice prices rose in 2022. (Garcia, 2023)','Rice prices rose in 2022 (Garcia, 2023).','Rice prices rose in 2022 (Garcia 2023).','Rice prices rose in 2022, (Garcia, 2023).'],a:1,e:'Author, comma, year inside the brackets, then the full stop after them.'},
+ {q:'Which hook is the weakest?',o:['Every day, Thai students spend more time on their phones than in class.','"Sleep is the best medicine we have" (Park, 2021, p. 3).','Have you ever used a phone?','Everyone needs rest to learn well.'],a:2,e:'It is a yes/no question with an obvious answer. It does not make the reader think.'},
+ {q:'What does analysis do in a body paragraph?',o:['Explains what the evidence means and how it supports the point','Repeats the evidence in different words','Introduces a new topic','Lists the sources in A to Z order'],a:0,e:'Analysis shows your critical thinking about the evidence.'},
+ {q:'Two authors appear in your sentence. Which is correct?',o:['Lee & Tan (2021) found that…','(Lee and Tan, 2021) found that…','Lee, and Tan (2021) found that…','Lee and Tan (2021) found that…'],a:3,e:'In the sentence, use "and". Use "&" only inside brackets.'},
+ {q:'How should the three body paragraphs compare?',o:['The first should be twice as long as the others','They can repeat the same evidence to be safe','They should be about equal in size, each with a different main point','Only the last one needs citations'],a:2,e:'Evenly spaced and equal in size, with no repeated evidence.'},
+ {q:'Which sentence is a final thought that makes a prediction?',o:['In conclusion, phones distract students.','If schools do not set clear rules, phone use in class will probably keep growing.','Phones were first sold in 1983.','According to Park (2021), students sleep less.'],a:1,e:'A prediction says what will probably happen in the future.'}
+];
+let qRight=0,qDone=0;
+function buildQuiz(){const L=$('#quizList');L.innerHTML='';qRight=0;qDone=0;$('#qScore').textContent=`Score: 0 / ${QUIZ.length}`;
+  QUIZ.forEach((q,qi)=>{const d=document.createElement('div');d.className='q';
+    d.innerHTML=`<p class="q-prompt">${qi+1}. ${esc(q.q)}</p><div class="opts">${q.o.map((o,i)=>`<button class="opt" data-i="${i}"><span class="ol">${'ABCD'[i]}</span><span>${esc(o)}</span></button>`).join('')}</div><p class="q-exp" hidden></p>`;
+    d.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{if(d.dataset.done)return;d.dataset.done=1;const i=+b.dataset.i;const ok=i===q.a;
+      b.classList.add(ok?'right':'wrong');if(!ok)d.querySelector(`.opt[data-i="${q.a}"]`).classList.add('right');d.querySelectorAll('.opt').forEach(x=>x.disabled=true);
+      if(ok)qRight++;qDone++;const e=d.querySelector('.q-exp');e.hidden=false;e.innerHTML=`<b>${ok?'Correct.':'Not quite.'}</b> ${esc(q.e)}`;
+      $('#qScore').textContent=`Score: ${qRight} / ${QUIZ.length}`+(qDone===QUIZ.length?(qRight>=8?' · Excellent!':' · Review the parts you missed and try again.'):'');}));
+    L.appendChild(d);});}
+buildQuiz();$('#qReset').addEventListener('click',buildQuiz);
+
+/* ---------- warnings ---------- */
+(()=>{const ws=document.querySelectorAll('.warn');
+  if(!('IntersectionObserver' in window)){ws.forEach(w=>w.classList.add('seen'));return;}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target);}}),{threshold:.6});
+  ws.forEach(w=>io.observe(w));})();
+
+/* ---------- essay title -> professor's title advice ---------- */
+(()=>{const btn=$('#ttlBtn');btn.addEventListener('click',()=>{const pr=document.querySelector('.prof[data-prof="title"]');if(!pr)return;
+  pr.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+  setTimeout(()=>{pr.classList.remove('live');void pr.offsetWidth;pr.classList.add('live','flash');setTimeout(()=>pr.classList.remove('flash'),2200);},450);});})();
+/* ---------- Professor Cite ---------- */
+/* One picture holds both layers: body on the left half, pointing hand on the right half. */
+const PROF_IMG='data:image/webp;base64,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';
+const PROF_TIPS={
+ welcome:['Hello! I am Professor Cite. A researched essay has [[five paragraphs]] and every borrowed fact needs a citation.','Tap anything coloured on this page. You cannot break it, so [[explore]]!'],
+ map:['Five paragraphs, [[one thesis]]. Every paragraph points back to it.','Only one paragraph has [[no citations]]: the conclusion.'],
+ hook:['Your hook is your [[first impression]]. Make it interesting.','A statistic or a quotation in your hook still needs a [[citation]].'],
+ thesis:['One sentence, [[one opinion]], three main points.','Each main point becomes the [[topic sentence]] of one body paragraph.'],
+ body:['Evidence alone is not enough. Tell the reader [[what it means]].','Keep your three body paragraphs [[equal in size]].'],
+ apa:['After a bracket citation, the [[full stop]] goes last.','Quoting exact words? Add the [[page number]].'],
+ title:['Look at the essay title. It goes [[centred and bold]] at the top of page 1. No underline, no italics, no quotation marks.','Write a phrase, not a sentence, in [[Title Case]]. Capitalise major words and words of four letters or more. No full stop at the end.'],
+ concl:['Restate your thesis in [[new words]]. Do not copy it.','No new evidence here, so [[no citations]] in the conclusion.']
+};
+function kwify(t){return t.replace(/\[\[(.+?)\]\]([.,;:!?]?)/g,'<span class="kwrap"><span class="kw">$1<svg class="kw-ring" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M10 24 C 4 8, 90 0, 96 16 C 100 32, 24 42, 5 27 C 0 18, 28 7, 62 8"/></svg></span>$2</span>');}
+document.querySelectorAll('.prof[data-prof]').forEach(el=>{
+  const tips=PROF_TIPS[el.dataset.prof];if(!tips)return;let k=0;
+  el.innerHTML=`<div class="prof-row"><button class="prof-fig" type="button" aria-label="Professor Cite. Tap for another tip."><span class="pf"><span class="pb"><img src="${PROF_IMG}" alt="" draggable="false"></span><span class="ph"><img src="${PROF_IMG}" alt="" draggable="false"></span></span></button><svg class="prof-arrow" viewBox="0 0 80 60" aria-hidden="true"><path class="chalk-l a1" d="M4 36 C 22 8, 52 6, 74 28"/><path class="chalk-l a2" d="M61 19 L75 29 L60 34"/></svg><div class="prof-board" role="note"><span class="prof-name">Professor Cite</span><p class="prof-say" aria-live="polite">${kwify(tips[0])}</p>${tips.length>1?'<span class="prof-more">Tap me for another tip</span>':''}</div></div>`;
+  /* If the picture is damaged (for example after another AI tool retypes the code), hide him cleanly and keep the board. */
+  const fail=()=>el.classList.add('noimg');
+  el.querySelectorAll('.prof-fig img').forEach(img=>{if(img.complete&&img.naturalWidth===0)fail();else img.addEventListener('error',fail);});
+  el.querySelector('.prof-fig').addEventListener('click',()=>{k=(k+1)%tips.length;el.querySelector('.prof-say').innerHTML=kwify(tips[k]);el.classList.remove('live');void el.offsetWidth;el.classList.add('live');});
+});
+(()=>{const ps=document.querySelectorAll('.prof[data-prof]');
+  if(!('IntersectionObserver' in window)){ps.forEach(p=>p.classList.add('live'));return;}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('live');io.unobserve(e.target);}}),{threshold:.45});
+  ps.forEach(p=>io.observe(p));
+  /* Backup for previews that never report scrolling: start everyone after 2 seconds. */
+  setTimeout(()=>ps.forEach(p=>p.classList.add('live')),2000);})();
+</script>
+</body></html>
